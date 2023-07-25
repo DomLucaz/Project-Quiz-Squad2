@@ -13,7 +13,7 @@
 
 ### **Deploy** 🖥️
  
--   [Quiz](https://domlucaz.github.io/Project-Quiz-Squad2/index.html)
+-   [Quiz](https://domlucaz.github.io/Project-Quiz-Squad2)
 
 #
 
