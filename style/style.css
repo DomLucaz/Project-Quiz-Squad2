@@ -1,3 +1,55 @@
+/* Estilização geral */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    font-family: 'Karla', sans-serif;
+    border: 5px solid black;
+    justify-content: center;
+}
+
+
+/* Estilização  */
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1080px;
+}
+
+section h1{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 800;
+}
+
+section{
+    border: 5px solid rgb(224, 7, 7);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100dvh;
+}
+
+#home{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 5px solid black; */
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid black;
+}
 
 /*Estilização do dark mode  */
 
