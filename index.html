@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css">
+    <link rel="icon" type="image/x-icon" href="style/img/ideas.png">
+
     <title>Quiz</title>
 
 </head>
@@ -13,21 +15,23 @@
 
 <body>
     <div class="container">
-        <section id="home">
-            <h1>Quiz</h1>
-            <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
-            <form class="formulario">
-                <label for="uname"><b>Nome:</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-                <label>Tema:</label>
-                <select>
-                    <option disabled selected>--Selecione um Tema--</option>
-                    <option value="HTML">HTML</option>
-                    <option value="CSS">CSS</option>
-                    <option value="JavaScript">JavaScript</option>
-                </select>
-                <button type="button" class="selecao">Iniciar - Quiz</button>
-            </form>
+        <section id="home" class="home">
+            <div class="card">
+                <h1>Quiz</h1>
+                <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
+                <form class="formulario">
+                    <label for="name">Nome</label>
+                    <input type="text" placeholder="Nome usuário" name="uname" required>
+                    <label>Tema</label>
+                    <select>
+                        <option disabled selected>-- Selecione um Tema --</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                    </select>
+                    <button type="button" class="selecao">Iniciar</button>
+                </form>
+            </div>
         </section>
 
         <!-- Fim home quiz -->
@@ -48,7 +52,7 @@
         <!-- Fim seçao questões quiz -->
 
         <!--Inicio seção resultado -->
-        <section id="result">
+        <section class="result">
             <h1>Resultado</h1>
             <table>
                 <thead>
