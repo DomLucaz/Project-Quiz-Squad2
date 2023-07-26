@@ -50,3 +50,64 @@ section{
     align-items: center;
     border: 5px solid black;
 }
+
+/*Estilização do dark mode  */
+
+*{
+    --cordarkmode:  #232c35;
+}
+
+.body{
+    background-color: #fafafa;
+    transition: background 0.2s linear;
+    
+}
+
+body.dark {
+    background: var(--cordarkmode); 
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox:checked + .labeldark .btndark {
+    transform: translateX(24px); /* "Transform" é o que permite mover o elemento e "translateX" é o que faz ele ser movimentado na horizontal*/ 
+}
+
+.bi-moon-fill {
+    color: #f1c40f;
+    margin-left: 2px;
+}
+
+.bi-sun-fill {
+    color: #f1c40f;
+    margin-right: 2px;
+}
+
+.labeldark {
+    background-color: #111;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+    position: relative;
+    height: 17px;
+    top: 3px;
+    left: 10px;
+    width: 43px;
+    transform: scale(1.5);
+}
+
+.labeldark .btndark {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    height: 19px;
+    width: 19px;
+    transition: transform 0.2s linear;
+}
