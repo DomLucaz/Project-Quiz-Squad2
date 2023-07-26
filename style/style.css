@@ -46,11 +46,15 @@ section{
     height: 100dvh;
 }
 
+[hidden]{
+    display:none; /*Flexbox impede que "hidden" funcione*/
+                /*Portanto, não pode haver display: flex no #home, #quiz e #result*/
+}
 
 /* Estilização Home Quiz */
 
 #home{
-    display:flex;
+    /*display:flex;*/
     flex-direction: column;
     justify-content: center;
     /* border: 5px solid black; */
