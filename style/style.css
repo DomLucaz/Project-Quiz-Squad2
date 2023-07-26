@@ -9,6 +9,120 @@
 body{
     display: flex;
     font-family: 'Karla', sans-serif;
+    border: 5px solid black;
+    justify-content: center;
+}
+
+
+/* Estilização  */
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1080px;
+}
+
+section h1{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 800;
+}
+
+section{
+    border: 5px solid rgb(224, 7, 7);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100dvh;
+}
+
+#home{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 5px solid black; */
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid black;
+}
+
+/*Estilização do dark mode  */
+
+*{
+    --cordarkmode:  #232c35;
+}
+
+.body{
+    background-color: #fafafa;
+    transition: background 0.2s linear;
+    
+}
+
+body.dark {
+    background: var(--cordarkmode); 
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox:checked + .labeldark .btndark {
+    transform: translateX(24px); /* "Transform" é o que permite mover o elemento e "translateX" é o que faz ele ser movimentado na horizontal*/ 
+}
+
+.bi-moon-fill {
+    color: #f1c40f;
+    margin-left: 2px;
+}
+
+.bi-sun-fill {
+    color: #f1c40f;
+    margin-right: 2px;
+}
+
+.labeldark {
+    background-color: #111;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3px;
+    position: relative;
+    height: 17px;
+    top: 3px;
+    left: 10px;
+    width: 43px;
+    transform: scale(1.5);
+}
+
+.labeldark .btndark {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    height: 19px;
+    width: 19px;
+    transition: transform 0.2s linear;
+}
+
+/* Estilização geral */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    font-family: 'Karla', sans-serif;
     border: 1px solid black;
     justify-content: center;
 }
