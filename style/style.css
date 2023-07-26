@@ -111,3 +111,109 @@ body.dark {
     width: 19px;
     transition: transform 0.2s linear;
 }
+
+/* Estilização geral */
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    font-family: 'Karla', sans-serif;
+    border: 1px solid black;
+    justify-content: center;
+}
+
+body h1{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 800;
+}
+
+body p{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1080px;
+}
+
+
+section{
+    border: 5px solid rgb(224, 7, 7);
+    display:flex;
+    flex-direction: column;
+    height: 100dvh;
+}
+
+/* Estilização Home Quiz */
+
+#home{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 8px;
+    background-color: rgba(218, 218, 218, 0.205);
+    padding: 40px 20px 40px 20px ;
+    border: 1px solid black;
+}
+
+.card h1{
+    margin: 10px 10px 20px 10px;
+    /* border: 1px solid black; */
+}
+
+.card p {
+    margin-bottom: 10px;
+    font-weight: 500;
+    /* border: 1px solid black; */
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulario label{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    
+}
+.formulario input, select{
+    padding: 10px 0 10px ;
+    width: 80%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.formulario select, option{
+    padding: 10px 0 10px 0;
+    width: 80%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.formulario button{
+    font-weight: 600;
+    font-size: 16px;
+    margin: 20px 0 20px 0;
+    padding: 10px 0 10px 0;
+    width: 80%;
+    background-color: rgb(134, 134, 134);
+}
+
+/* Estilização Quiz Resultado */
