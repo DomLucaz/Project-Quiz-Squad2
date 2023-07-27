@@ -4,6 +4,7 @@
 *{
     margin: 0;
     padding: 0;
+    --cordarkmode:  #232c35;
 }
 
 body{
@@ -11,22 +12,30 @@ body{
     font-family: 'Karla', sans-serif;
     border: 5px solid black;
     justify-content: center;
+    background-color: #fafafa;
+    transition: background 0.2s linear;
 }
 
+body h1{
+    font-size: 40px;
+    text-align: center;
+    font-weight: 800;
+}
 
-/* Estilização  */
+body p{
+    font-size: 16px;
+    font-weight: 400;
+}
+
+body.dark {
+    background: var(--cordarkmode); 
+}
 
 .container{
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 1080px;
-}
-
-section h1{
-    font-size: 40px;
-    text-align: center;
-    font-weight: 800;
 }
 
 section{
@@ -37,16 +46,108 @@ section{
     height: 100dvh;
 }
 
+[hidden]{
+    display:none; /*Flexbox impede que "hidden" funcione*/
+                /*Portanto, não pode haver display: flex no #home, #quiz e #result*/
+}
+
+/* Estilização Home Quiz */
+
 #home{
-    display:flex;
+    /*display:flex;*/
     flex-direction: column;
     justify-content: center;
     /* border: 5px solid black; */
+}
+
+
+.card{
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 8px;
+    background-color: rgba(218, 218, 218, 0.205);
+    padding: 40px 20px 40px 20px ;
+    border: 1px solid black;
+}
+
+.card h1{
+    margin: 10px 10px 20px 10px;
+    /* border: 1px solid black; */
+}
+
+.card p {
+    margin-bottom: 10px;
+    font-weight: 500;
+    /* border: 1px solid black; */
 }
 
 .formulario{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 5px solid black;
+}
+
+.formulario label{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    
+}
+.formulario input, select{
+    padding: 10px 0 10px ;
+    width: 80%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.formulario select, option{
+    padding: 10px 0 10px 0;
+    width: 80%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.formulario button{
+    font-weight: 600;
+    font-size: 16px;
+    margin: 20px 0 20px 0;
+    padding: 10px 0 10px 0;
+    width: 80%;
+    background-color: rgb(134, 134, 134);
+}
+/*Estilização do dark mode  */
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox:checked + .labeldark .btndark {
+    transform: translateX(24px); /* "Transform" é o que permite mover o elemento e "translateX" é o que faz ele ser movimentado na horizontal*/ 
+}
+
+.bi-moon-fill {
+    color: #f1c40f;
+    margin-left: 2px;
+}
+
+.bi-sun-fill {
+    color: #f1c40f;
+    margin-right: 2px;
+}
+
+.labeldark {
+    background-color: #111;
+    border-radius:50px;
+    cursor: pointer;
+    display: flex;
+    padding: 3px;
+    width: 42px;
+    transform: scale(1.5);
+}
+
+.labeldark .btndark {
+    background-color: blue;
+    border-radius: 50%;
+    width: 19px;
+    transition: transform 0.2s linear;
 }

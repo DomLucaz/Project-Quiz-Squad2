@@ -1,48 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="style/img/ideas.png">
     <title>Quiz</title>
 
 </head>
-<!-- Inicio home quiz -->
 
 <body>
     <div class="container">
-        <section id="home">
-            <h1>Quiz</h1>
-            <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
-            <form class="formulario">
-                <label for="uname"><b>Nome:</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-                <label>Tema:</label>
-                <select>
-                    <option disabled selected>--Selecione um Tema--</option>
-                    <option value="HTML">HTML</option>
-                    <option value="CSS">CSS</option>
-                    <option value="JavaScript">JavaScript</option>
-                </select>
-                <button type="button"  class="timeStart selecao" >Iniciar - Quiz</button>
-            </form>
-        </section>
 
+        <!-- light mode button -->
+
+
+        <!-- Inicio home quiz -->
+        <section id="home" class="home" hidden>
+            <div class="botao-darklight">
+                <input type="checkbox" class="checkbox" id="chk">
+                <label class="labeldark" for="chk">
+                    <i class="bi bi-moon-fill"></i>
+                    <i class="bi bi-sun-fill"></i>
+                    <div class="btndark"></div>
+                </label>
+            </div>
+            <div class="card">
+                <h1>Quiz</h1>
+                <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
+                <form class="formulario">
+                    <label for="name">Nome</label>
+                    <input id="nome" type="text" placeholder="Nome usuário" name="uname" required>
+                    <label>Tema</label>
+                    <select id="tema">
+                        <option disabled selected>-- Selecione um Tema --</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                    </select>
+                    <button type="button" id="btnIniciar" class="timeStart selecao">Iniciar</button>
+                </form>
+            </div>
+        </section>
         <!-- Fim home quiz -->
 
         <!-- Inicio seçao questões quiz -->
-        <section id="quiz">
-            <h1>Quiz - Tema</h1>
+        <section id="quiz" hidden>
+            <h1>Quiz - <span id="quizTema"></span></h1>
             <article>
-                <p></p>
-                <form>
-                    <input type="radio" id="html" name="fav_language" value="HTML">
-                    <label for="html">HTML</label>
-                </form>
+                <div>
+                    <form id="questoes">
+
+                    </form>
+                </div>
                 <button type="button" id="timeStop">Concluir</button>
-                <button type="button" class="timeStart">Reniciar</button>
+                <button type="button" class="timeStart" id="reiniciar">Reniciar</button>
             </article>
             <!-- cronômetro -->
             <article>
@@ -52,7 +67,7 @@
         <!-- Fim seçao questões quiz -->
 
         <!--Inicio seção resultado -->
-        <section id="result">
+        <section id="result" hidden>
             <h1>Resultado</h1>
             <table>
                 <thead>
@@ -94,7 +109,7 @@
             <button type="button">Reniciar</button>
         </section>
         <!--Fim seção resultado -->
-        <script src="script/script.js"></script>
+        <script type="module" src="script/script.js"></script>
         <script src="script/cronometro.js"></script>
     </div>
 </body>
