@@ -1,5 +1,6 @@
 export const questoesJS = [
     {
+        identificador: "q1",
         pergunta: "Como se refere a um elemento HTML usando JavaScript?",
         alternativaA: "a) getElementID",
         alternativaB: "b) selectElement",
@@ -7,6 +8,7 @@ export const questoesJS = [
         alternativaD: "d) findElement",
     },
     {
+        identificador: "q2",
         pergunta: "Qual declaração é usada para criar uma variável em JavaScript?",
         alternativaA: "a) var nomeVariavel;",
         alternativaB: "b) const nomeVariavel;",
@@ -14,6 +16,7 @@ export const questoesJS = [
         alternativaD: "d) new nomeVariavel;",
     },
     {
+        identificador: "q3",
         pergunta: "Qual método é usado para adicionar um evento a um elemento HTML usando JavaScript?",
         alternativaA: "a) addEventListener()",
         alternativaB: "b) attachEvent()",
@@ -21,13 +24,15 @@ export const questoesJS = [
         alternativaD: "d) eventListener()",
     },
     {
+        identificador: "q4",
         pergunta: "Como você escreve um comentário de linha única em JavaScript?",
         alternativaA: "a) /* comentário */",
         alternativaB: "b) // comentário",
-        alternativaC: "c) <!-- comentário -->",
+        alternativaC: "c) <-- comentário -->",
         alternativaD: "d) // comentário",
     },
     {
+        identificador: "q5",
         pergunta: "Qual é a maneira correta de exibir uma caixa de diálogo com a mensagem 'Olá Mundo' em JavaScript?",
         alternativaA: "a) alertBox('Olá Mundo');",
         alternativaB: "b) msgBox('Olá Mundo');",
@@ -35,6 +40,7 @@ export const questoesJS = [
         alternativaD: "d) message('Olá Mundo');",
     },
     {
+        identificador: "q6",
         pergunta: "Como você verifica a igualdade de valor e tipo em JavaScript?",
         alternativaA: "a) a == b",
         alternativaB: "b) a === b",
@@ -42,6 +48,7 @@ export const questoesJS = [
         alternativaD: "d) a === b",
     },
     {
+        identificador: "q7",
         pergunta: "Qual função JavaScript é usada para converter uma string em um número inteiro?",
         alternativaA: "a) parseInt()",
         alternativaB: "b) toInteger()",
@@ -49,6 +56,7 @@ export const questoesJS = [
         alternativaD: "d) stringToInt()",
     },
     {
+        identificador: "q8",
         pergunta: "Qual método é usado para remover o último elemento de um array em JavaScript?",
         alternativaA: "a) removeLast()",
         alternativaB: "b) pop()",
@@ -56,6 +64,7 @@ export const questoesJS = [
         alternativaD: "d) splice()",
     },
     {
+        identificador: "q9",
         pergunta: "Como você cria uma função chamada 'dobro' que retorna o dobro de um número passado como argumento?",
         alternativaA: "a) function dobro(num) { return 2 * num; }",
         alternativaB: "b) function dobro => return 2 * num;",
@@ -63,10 +72,11 @@ export const questoesJS = [
         alternativaD: "d) var dobro = num => { return 2 * num; };",
     },
     {
+        identificador: "q10",
         pergunta: "Qual método é usado para adicionar um elemento ao final de um array em JavaScript?",
         alternativaA: "a) push()",
         alternativaB: "b) unshift()",
         alternativaC: "c) addToEnd()",
         alternativaD: "d) append()",
     },
-    ];
+];
