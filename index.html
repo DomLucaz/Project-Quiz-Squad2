@@ -12,22 +12,28 @@
 
 </head>
 
+
 <body>
     <div class="container">
-
         <!-- light mode button -->
-
-
-        <!-- Inicio home quiz -->
-        <section id="home" class="home" hidden>
-            <div class="botao-darklight">
-                <input type="checkbox" class="checkbox" id="chk">
-                <label class="labeldark" for="chk">
-                    <i class="bi bi-moon-fill"></i>
-                    <i class="bi bi-sun-fill"></i>
-                    <div class="btndark"></div>
+        <header>
+            <div class="botao-switch">
+                <label class="switch-wrapper" for="chk">
+                    <input type="checkbox" id="chk">
+                    <div class="switch">
+                        <i class="bi bi-moon-fill"></i>
+                        <i class="bi bi-sun-fill"></i>
+                    </div>
                 </label>
             </div>
+
+            <div class="timer">
+                <p>Tempo: <span id="cronometro">00:00:00</span></p>
+            </div>
+        </header>
+        <!-- Inicio home quiz -->
+        <section id="home" class="home" hidden>
+
             <div class="card">
                 <h1>Quiz</h1>
                 <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
@@ -48,6 +54,7 @@
         <!-- Fim home quiz -->
 
         <!-- Inicio seçao questões quiz -->
+
         <section id="quiz" hidden>
             <h1>Quiz - <span id="quizTema"></span></h1>
             <article>
@@ -60,9 +67,7 @@
                 <button type="button" class="timeStart" id="reiniciar">Reniciar</button>
             </article>
             <!-- cronômetro -->
-            <article>
-                <p>Tempo: <span id="cronometro">00:00:00</span></p>
-            </article>
+
         </section>
         <!-- Fim seçao questões quiz -->
 
