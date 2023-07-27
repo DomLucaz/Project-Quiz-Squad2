@@ -101,8 +101,8 @@ function deletarInformacao () {
 
 // Mudar título do QUIZ
 function mudarTitulo () {
-    const x = document.getElementById("quizTema");
-    x.innerHTML = informacoesUser[0].tema;
+    const tituloQuiz = document.getElementById("quizTema");
+    tituloQuiz.innerHTML = informacoesUser[0].tema;
 }
 
 // Botão Iniciar
