@@ -1,5 +1,6 @@
 export const questoesHtml = [
     {
+        identificador: "q1",
         pergunta: "Qual tag HTML é usada para criar uma lista não ordenada?",
         alternativaA: "a) &lt;ul&gt;",
         alternativaB: "b) &lt;ol&gt;",
@@ -7,6 +8,7 @@ export const questoesHtml = [
         alternativaD: "d) &lt;dl&gt;",
     },
     {
+        identificador: "q2",
         pergunta: "Qual atributo HTML é usado para definir o texto alternativo de uma imagem?",
         alternativaA: "a) src",
         alternativaB: "b) alt",
@@ -14,6 +16,7 @@ export const questoesHtml = [
         alternativaD: "d) link",
     },
     {
+        identificador: "q3",
         pergunta: "Qual elemento HTML é utilizado para criar um hiperlink?",
         alternativaA: "a) &lt;url&gt;",
         alternativaB: "b) &lt;link&gt;",
@@ -21,6 +24,7 @@ export const questoesHtml = [
         alternativaD: "d) &lt;hyper&gt;",
     },
     {
+        identificador: "q4",
         pergunta: "Em HTML, qual tag é usada para criar uma tabela?",
         alternativaA: "a) &lt;table&gt;",
         alternativaB: "b) &lt;tab&gt;",
@@ -28,6 +32,7 @@ export const questoesHtml = [
         alternativaD: "d) &lt;td&gt;",
     },
     {
+        identificador: "q5",
         pergunta: "Qual atributo HTML é usado para definir o título de uma página?",
         alternativaA: "a) &lt;header&gt;",
         alternativaB: "b) &lt;title&gt;",
@@ -35,6 +40,7 @@ export const questoesHtml = [
         alternativaD: "d) &lt;head&gt;",
     },
     {
+        identificador: "q6",
         pergunta: "Qual tag HTML é usada para criar um parágrafo?",
         alternativaA: "a) &lt;p&gt;",
         alternativaB: "b) &lt;paragraph&gt;",
@@ -42,6 +48,7 @@ export const questoesHtml = [
         alternativaD: "d) &lt;text&gt;",
     },
     {
+        identificador: "q7",
         pergunta: "Qual elemento HTML é usado para definir um estilo em linha (inline)?",
         alternativaA: "a) &lt;css&gt;",
         alternativaB: "b) &lt;style&gt;",
@@ -49,6 +56,7 @@ export const questoesHtml = [
         alternativaD: "d) &lt;i&gt;",
     },
     {
+        identificador: "q8",
         pergunta: "Em HTML, qual tag é usada para criar um campo de entrada de texto?",
         alternativaA: "a) &lt;input&gt;",
         alternativaB: "b) &lt;text&gt;",
@@ -56,6 +64,7 @@ export const questoesHtml = [
         alternativaD: "d) &lt;field&gt;",
     },
     {
+        identificador: "q9",
         pergunta: "Qual atributo HTML é usado para aplicar estilo a um elemento?",
         alternativaA: "a) class",
         alternativaB: "b) style",
@@ -63,6 +72,7 @@ export const questoesHtml = [
         alternativaD: "d) type",
     },
     {
+        identificador: "q10",
         pergunta: "Em HTML, qual tag é usada para criar uma linha horizontal?",
         alternativaA: "a) &lt;line&gt;",
         alternativaB: "b) &lt;hr&gt;",

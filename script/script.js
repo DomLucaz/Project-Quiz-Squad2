@@ -78,10 +78,10 @@ function criarQuestoes() {
         areasQuestoes.innerHTML += `
             <fieldset>
                 <legend>${questao.pergunta}</legend>
-                <input type="radio">${questao.alternativaA}<br>
-                <input type="radio">${questao.alternativaB}<br>
-                <input type="radio">${questao.alternativaC}<br>
-                <input type="radio">${questao.alternativaD}<br>
+                <input type="radio" name="${questao.identificador}">${questao.alternativaA}<br>
+                <input type="radio" name="${questao.identificador}">${questao.alternativaB}<br>
+                <input type="radio" name="${questao.identificador}">${questao.alternativaC}<br>
+                <input type="radio" name="${questao.identificador}">${questao.alternativaD}<br>
             </fieldset>
         `;
     }
