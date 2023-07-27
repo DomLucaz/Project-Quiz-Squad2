@@ -14,6 +14,7 @@ body{
     justify-content: center;
     background-color: #fafafa;
     transition: background 0.2s linear;
+    height: 100dvh;
 }
 
 body h1{
@@ -31,6 +32,16 @@ body.dark {
     background: var(--cordarkmode); 
 }
 
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+header .timer{
+    display: flex;
+    align-items: center;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -43,7 +54,8 @@ section{
     display:flex;
     flex-direction: column;
     align-items: center;
-    height: 100dvh;
+    height: 100%;
+    
 }
 
 [hidden]{
@@ -114,40 +126,57 @@ section{
     width: 80%;
     background-color: rgb(134, 134, 134);
 }
-/*Estilização do dark mode  */
 
-.checkbox {
+/*Estilização botao switch   */
+.switch-wrapper{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+}
+.switch-wrapper input{
     opacity: 0;
-    position: absolute;
+    width: 0;
+    height: 0;
 }
 
-.checkbox:checked + .labeldark .btndark {
-    transform: translateX(24px); /* "Transform" é o que permite mover o elemento e "translateX" é o que faz ele ser movimentado na horizontal*/ 
+.switch{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    border-radius: 34px;
+}
+
+.switch::before{
+    display: flex;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    content: "";
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.switch-wrapper input:checked + .switch::before{
+    background-color: #f1c40f;
+    left: 28px;
 }
 
 .bi-moon-fill {
     color: #f1c40f;
-    margin-left: 2px;
 }
 
 .bi-sun-fill {
     color: #f1c40f;
-    margin-right: 2px;
-}
-
-.labeldark {
-    background-color: #111;
-    border-radius:50px;
-    cursor: pointer;
-    display: flex;
-    padding: 3px;
-    width: 42px;
-    transform: scale(1.5);
-}
-
-.labeldark .btndark {
-    background-color: blue;
-    border-radius: 50%;
-    width: 19px;
-    transition: transform 0.2s linear;
 }

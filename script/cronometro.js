@@ -67,6 +67,7 @@ function atualizaCronometro() {
 
     for (let start of timeStart) {
         start.addEventListener("click", (evento) => {
+            clearInterval(idCronometro);
             iniciarCronometro();
         });
     }
