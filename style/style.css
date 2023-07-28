@@ -5,16 +5,16 @@
     margin: 0;
     padding: 0;
     --cordarkmode:  #232c35;
+    box-sizing: border-box;
 }
 
 body{
     display: flex;
     font-family: 'Karla', sans-serif;
-    border: 5px solid black;
     justify-content: center;
     background-color: #fafafa;
-    transition: background 0.2s linear;
-    height: 100dvh;
+    transition: 0.2s linear;
+    height: 100vh;
 }
 
 body h1{
@@ -32,9 +32,17 @@ body.dark {
     background: var(--cordarkmode); 
 }
 
-header{
+
+.container-header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    background-color: #fafafa;
+    box-shadow: 0.5px 0.5px 10px 0.5px #000;
+    max-width: 100vw;
+    width: 100%;
+    height: 42px;
+    position: absolute;
+    left: 0;
 }
 
 header .timer{
@@ -50,12 +58,11 @@ header .timer{
 }
 
 section{
-    border: 5px solid rgb(224, 7, 7);
     display:flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
-    
+    margin-top: 6%;
 }
 
 [hidden]{
@@ -79,6 +86,7 @@ section{
     background-color: rgba(218, 218, 218, 0.205);
     padding: 40px 20px 40px 20px ;
     border: 1px solid black;
+    box-shadow: 0.5px 0.5px 10px 0.5px #313131;
 }
 
 .card h1{
@@ -127,7 +135,29 @@ section{
     background-color: rgb(134, 134, 134);
 }
 
+#questoes {
+    margin-top: 50px;
+    overflow: scroll;
+    overflow-x: hidden;
+    white-space: normal;
+    width: 100%;
+    height: 70vh;
+}
+
+
+
+#timeStop {
+    margin-top: 50px;
+    font-size: 18px;
+}
+
+.timeStart{
+    font-size: 18px;
+}
+
+
 /*Estilização botao switch   */
+
 .switch-wrapper{
     position: relative;
     display: inline-block;
@@ -144,11 +174,13 @@ section{
 
 .switch{
     display: flex;
+    cursor: pointer;
     align-items: center;
     width: 100%;
     height: 100%;
     justify-content: space-around;
     position: absolute;
+    margin-top: 5px;
     top: 0;
     left: 0;
     background-color: black;
@@ -160,7 +192,7 @@ section{
     position: absolute;
     top: 2px;
     left: 2px;
-    background-color: white;
+    background-color: rgb(240, 230, 146);
     height: 30px;
     width: 30px;
     content: "";
@@ -169,14 +201,57 @@ section{
 }
 
 .switch-wrapper input:checked + .switch::before{
-    background-color: #f1c40f;
+    background-color: #a0a0a0;
     left: 28px;
 }
 
 .bi-moon-fill {
-    color: #f1c40f;
+    color: whitesmoke;
 }
 
 .bi-sun-fill {
     color: #f1c40f;
+}
+
+/*Estilização modo dark*/
+
+/*Home Quiz */
+.dark .container-header{
+    background-color: var(--cordarkmode);
+    transition: 0.2s linear;
+
+}
+
+.dark .timer {
+    color: #fafafa;
+}
+
+.dark .card h1 {
+    color: #fafafa;
+}
+
+.dark .card p {
+    color: #fafafa;
+}
+
+.dark .formulario {
+    color: #fafafa;
+}
+
+.dark .timeStart {
+    color: #fafafa;
+}
+
+/*Seção questões quiz*/
+
+.dark #quiz {
+    color: #fafafa;
+}
+
+.dark button {
+    background-color: rgb(13, 13, 39);
+}
+
+.dark #timeStop {
+    color: #fafafa;
 }
