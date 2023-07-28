@@ -64,7 +64,6 @@ export function pararCronometro() {
 }
 
 const timeStart = document.querySelectorAll(".timeStart");
-const timeStop = document.getElementById("timeStop");
 
 for (let start of timeStart) {
     start.addEventListener("click", (evento) => {
