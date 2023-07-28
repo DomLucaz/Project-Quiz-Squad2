@@ -63,10 +63,6 @@ section{
                 /*Portanto, não pode haver display: flex no #home, #quiz e #result*/
 }
 
-.hidden {
-    display: none;
-}
-
 /* Estilização Home Quiz */
 
 #home{
