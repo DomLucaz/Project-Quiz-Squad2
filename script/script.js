@@ -11,7 +11,7 @@ const home = [false, true, true];
 const quiz = [true, false, true];
 const resultado = [true, true, false];
 
-//Coletando os botões
+// Coletando os botões
 const btnIniciar = document.getElementById("btnIniciar");
 const btnReiniciarQuiz = document.getElementById("reiniciar");
 const btnConcluirQuiz = document.getElementById("timeStop");
@@ -81,10 +81,10 @@ function criarQuestoes() {
         areasQuestoes.innerHTML += `
             <fieldset>
                 <legend>${questao.pergunta}</legend>
-                <input type="radio" name="${questao.identificador}" value="alternativaA">${questao.alternativaA}<br>
-                <input type="radio" name="${questao.identificador}" value="alternativaB">${questao.alternativaB}<br>
-                <input type="radio" name="${questao.identificador}" value="alternativaC">${questao.alternativaC}<br>
-                <input type="radio" name="${questao.identificador}" value="alternativaD">${questao.alternativaD}<br>
+                <input type="radio" name="${questao.identificador}" value="alternativaA"><label for="alternativaA">${questao.alternativaA}</label><br>
+                <input type="radio" name="${questao.identificador}" value="alternativaB"><label for="alternativaB">${questao.alternativaB}</label><br>
+                <input type="radio" name="${questao.identificador}" value="alternativaC"><label for="alternativaC">${questao.alternativaC}</label><br>
+                <input type="radio" name="${questao.identificador}" value="alternativaD"><label for="alternativaD">${questao.alternativaD}</label><br>
             </fieldset>
         `;
     }
