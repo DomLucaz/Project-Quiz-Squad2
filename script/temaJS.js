@@ -6,14 +6,16 @@ export const questoesJS = [
         alternativaB: "b) selectElement",
         alternativaC: "c) getElementById",
         alternativaD: "d) findElement",
+        correta: "alternativaC"
     },
     {
         identificador: "q2",
-        pergunta: "Qual declaração é usada para criar uma variável em JavaScript?",
+        pergunta: "Qual declaração não é usada para criar uma variável em JavaScript?",
         alternativaA: "a) var nomeVariavel;",
         alternativaB: "b) const nomeVariavel;",
         alternativaC: "c) let nomeVariavel;",
         alternativaD: "d) new nomeVariavel;",
+        correta: "alternativaD"
     },
     {
         identificador: "q3",
@@ -22,14 +24,16 @@ export const questoesJS = [
         alternativaB: "b) attachEvent()",
         alternativaC: "c) addEvent()",
         alternativaD: "d) eventListener()",
+        correta: "alternativaA"
     },
     {
         identificador: "q4",
         pergunta: "Como você escreve um comentário de linha única em JavaScript?",
         alternativaA: "a) /* comentário */",
         alternativaB: "b) // comentário",
-        alternativaC: "c) <-- comentário -->",
-        alternativaD: "d) // comentário",
+        alternativaC: "c) <- comentário ->",
+        alternativaD: "d) //=> comentário",
+        correta: "alternativaB"
     },
     {
         identificador: "q5",
@@ -38,6 +42,7 @@ export const questoesJS = [
         alternativaB: "b) msgBox('Olá Mundo');",
         alternativaC: "c) alert('Olá Mundo');",
         alternativaD: "d) message('Olá Mundo');",
+        correta: "alternativaC"
     },
     {
         identificador: "q6",
@@ -45,7 +50,8 @@ export const questoesJS = [
         alternativaA: "a) a == b",
         alternativaB: "b) a === b",
         alternativaC: "c) a = b",
-        alternativaD: "d) a === b",
+        alternativaD: "d) a ==== b",
+        correta: "alternativaB"
     },
     {
         identificador: "q7",
@@ -54,6 +60,7 @@ export const questoesJS = [
         alternativaB: "b) toInteger()",
         alternativaC: "c) parseInteger()",
         alternativaD: "d) stringToInt()",
+        correta: "alternativaA"
     },
     {
         identificador: "q8",
@@ -62,14 +69,16 @@ export const questoesJS = [
         alternativaB: "b) pop()",
         alternativaC: "c) deleteLast()",
         alternativaD: "d) splice()",
+        correta: "alternativaB"
     },
     {
         identificador: "q9",
         pergunta: "Como você cria uma função chamada 'dobro' que retorna o dobro de um número passado como argumento?",
         alternativaA: "a) function dobro(num) { return 2 * num; }",
         alternativaB: "b) function dobro => return 2 * num;",
-        alternativaC: "c) function dobro(num) { return num * 2; }",
-        alternativaD: "d) var dobro = num => { return 2 * num; };",
+        alternativaC: "c) function dobro(num) { return num / 2; }",
+        alternativaD: "d) var dobro = num -> { return 2 * num; };",
+        correta: "alternativaA"
     },
     {
         identificador: "q10",
@@ -78,5 +87,6 @@ export const questoesJS = [
         alternativaB: "b) unshift()",
         alternativaC: "c) addToEnd()",
         alternativaD: "d) append()",
+        correta: "alternativaA"
     },
 ];

@@ -2,6 +2,7 @@
 import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
+import { pararCronometro } from "./cronometro.js";
 
 //========= Declarações =============================
 
@@ -10,8 +11,10 @@ const home = [false, true, true];
 const quiz = [true, false, true];
 const resultado = [true, true, false];
 
+//Coletando os botões
 const btnIniciar = document.getElementById("btnIniciar");
 const btnReiniciarQuiz = document.getElementById("reiniciar");
+const btnConcluirQuiz = document.getElementById("timeStop");
 
 const informacoesUser = [];
 
@@ -78,10 +81,10 @@ function criarQuestoes() {
         areasQuestoes.innerHTML += `
             <fieldset>
                 <legend>${questao.pergunta}</legend>
-                <input type="radio" name="${questao.identificador}">${questao.alternativaA}<br>
-                <input type="radio" name="${questao.identificador}">${questao.alternativaB}<br>
-                <input type="radio" name="${questao.identificador}">${questao.alternativaC}<br>
-                <input type="radio" name="${questao.identificador}">${questao.alternativaD}<br>
+                <input type="radio" name="${questao.identificador}" value="alternativaA">${questao.alternativaA}<br>
+                <input type="radio" name="${questao.identificador}" value="alternativaB">${questao.alternativaB}<br>
+                <input type="radio" name="${questao.identificador}" value="alternativaC">${questao.alternativaC}<br>
+                <input type="radio" name="${questao.identificador}" value="alternativaD">${questao.alternativaD}<br>
             </fieldset>
         `;
     }
@@ -119,6 +122,32 @@ btnReiniciarQuiz.addEventListener("click", ()=> {
     deletarInformacao();
     destruirQuestoes();
     
+});
+
+//Validação das questões
+function validarRespostas() {
+    let questoes = pegarTema(); // var que armazena o retorno de pegarTema que é o vetor de objetos do tema que o usuario selecionou na home
+    let pontuacao = 0; // var para pontuacao, inicia zerada
+    
+    for(let questao of questoes) { //iteração em cada objeto do vetor "objetos"
+        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); // (querySelector pega todas as alternativas com mesmo name, ou seja, da mesma questão, porém só a que estiver checked (selecionada pelo usuário))
+        if (!selecionada) { // caso a questao estiver sem resposta, "selecionada" tem valor "null"
+            alert("Por favor, responda todas as questões antes de continuar.");
+            return; // este return indica que a função não executa as linhas abaixo
+        }
+        let resposta = selecionada.value; // var que armazena o valor do input (alternativaA, alternativaB...)
+        if(resposta === questao.correta) { // se a resposta for igual a questao correta ("correta" é uma proprieda do objeto de cada questão em cada tema),
+            pontuacao += 1; //a postuação é soma com mais 1
+        }
+    }
+    pararCronometro();
+    return pontuacao; // função retorna um inteiro, que é a quantidade de questões corretas que o usuário acertou
+}
+//lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
+// Botão concluir QUIZ
+btnConcluirQuiz.addEventListener("click", ()=> {
+    validarRespostas();
+    console.log(validarRespostas());
 });
 
 //========= Main =============================
