@@ -6,6 +6,7 @@ export const questoesHtml = [
         alternativaB: "b) &lt;ol&gt;",
         alternativaC: "c) &lt;li&gt;",
         alternativaD: "d) &lt;dl&gt;",
+        correta: "alternativaA"
     },
     {
         identificador: "q2",
@@ -14,6 +15,7 @@ export const questoesHtml = [
         alternativaB: "b) alt",
         alternativaC: "c) href",
         alternativaD: "d) link",
+        correta: "alternativaB"
     },
     {
         identificador: "q3",
@@ -22,6 +24,7 @@ export const questoesHtml = [
         alternativaB: "b) &lt;link&gt;",
         alternativaC: "c) &lt;a&gt;",
         alternativaD: "d) &lt;hyper&gt;",
+        correta: "alternativaC"
     },
     {
         identificador: "q4",
@@ -30,6 +33,7 @@ export const questoesHtml = [
         alternativaB: "b) &lt;tab&gt;",
         alternativaC: "c) &lt;tr&gt;",
         alternativaD: "d) &lt;td&gt;",
+        correta: "alternativaA"
     },
     {
         identificador: "q5",
@@ -38,6 +42,7 @@ export const questoesHtml = [
         alternativaB: "b) &lt;title&gt;",
         alternativaC: "c) &lt;h1&gt;",
         alternativaD: "d) &lt;head&gt;",
+        correta: "alternativaB"
     },
     {
         identificador: "q6",
@@ -46,14 +51,16 @@ export const questoesHtml = [
         alternativaB: "b) &lt;paragraph&gt;",
         alternativaC: "c) &lt;para&gt;",
         alternativaD: "d) &lt;text&gt;",
+        correta: "alternativaA"
     },
     {
         identificador: "q7",
-        pergunta: "Qual elemento HTML é usado para definir um estilo em linha (inline)?",
+        pergunta: "Qual tag HTML é usada para definir estilos?",
         alternativaA: "a) &lt;css&gt;",
-        alternativaB: "b) &lt;style&gt;",
-        alternativaC: "c) &lt;inline&gt;",
+        alternativaB: "b) style",
+        alternativaC: "c) &lt;style&gt;",
         alternativaD: "d) &lt;i&gt;",
+        correta: "alternativaC"
     },
     {
         identificador: "q8",
@@ -62,6 +69,7 @@ export const questoesHtml = [
         alternativaB: "b) &lt;text&gt;",
         alternativaC: "c) &lt;textbox&gt;",
         alternativaD: "d) &lt;field&gt;",
+        correta: "alternativaA"
     },
     {
         identificador: "q9",
@@ -70,6 +78,7 @@ export const questoesHtml = [
         alternativaB: "b) style",
         alternativaC: "c) format",
         alternativaD: "d) type",
+        correta: "alternativaB"
     },
     {
         identificador: "q10",
@@ -78,5 +87,6 @@ export const questoesHtml = [
         alternativaB: "b) &lt;hr&gt;",
         alternativaC: "c) &lt;break&gt;",
         alternativaD: "d) &lt;hline&gt;",
-    },
+        correta: "alternativaB"
+    }
 ];
