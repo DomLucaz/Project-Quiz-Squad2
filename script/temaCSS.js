@@ -6,14 +6,16 @@ export const questoesCSS = [
         alternativaB: "b) color",
         alternativaC: "c) font-color",
         alternativaD: "d) text-style",
+        correta: "alternativaB"
     },
     {
         identificador: "q2",
         pergunta: "Em CSS, qual seletor é usado para selecionar um elemento pelo seu atributo 'id'?",
         alternativaA: "a) #elemento",
-        alternativaB: "b) #elemento",
+        alternativaB: "b) #.elemento",
         alternativaC: "c) .elemento",
         alternativaD: "d) elemento",
+        correta: "alternativaA"
     },
     {
         identificador: "q3",
@@ -22,6 +24,7 @@ export const questoesCSS = [
         alternativaB: "b) space",
         alternativaC: "c) margin",
         alternativaD: "d) inner-space",
+        correta: "alternativaA"
     },
     {
         identificador: "q4",
@@ -30,6 +33,7 @@ export const questoesCSS = [
         alternativaB: "b) cursor",
         alternativaC: "c) pointer",
         alternativaD: "d) hover",
+        correta: "alternativaB"
     },
     {
         identificador: "q5",
@@ -38,6 +42,7 @@ export const questoesCSS = [
         alternativaB: "b) spacing",
         alternativaC: "c) line-spacing",
         alternativaD: "d) text-spacing",
+        correta: "alternativaA"
     },
     {
         identificador: "q6",
@@ -46,6 +51,7 @@ export const questoesCSS = [
         alternativaB: "b) ul li",
         alternativaC: "c) unordered-list",
         alternativaD: "d) ul + li",
+        correta: "alternativaB"
     },
     {
         identificador: "q7",
@@ -54,6 +60,7 @@ export const questoesCSS = [
         alternativaB: "b) text-shadow",
         alternativaC: "c) shadow",
         alternativaD: "d) element-shadow",
+        correta: "alternativaA"
     },
     {
         identificador: "q8",
@@ -62,6 +69,7 @@ export const questoesCSS = [
         alternativaB: "b) text-size",
         alternativaC: "c) font",
         alternativaD: "d) size-font",
+        correta: "alternativaA"
     },
     {
         identificador: "q9",
@@ -70,6 +78,7 @@ export const questoesCSS = [
         alternativaB: "b) uppercase",
         alternativaC: "c) text-transform: uppercase",
         alternativaD: "d) transform: uppercase",
+        correta: "alternativaA"
     },
     {
         identificador: "q10",
@@ -78,5 +87,6 @@ export const questoesCSS = [
         alternativaB: "b) transition",
         alternativaC: "c) smooth-transition",
         alternativaD: "d) style-transition",
-    },
+        correta: "alternativaB"
+    }
 ];

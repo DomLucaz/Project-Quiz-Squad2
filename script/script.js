@@ -15,6 +15,7 @@ const resultado = [true, true, false];
 const btnIniciar = document.getElementById("btnIniciar");
 const btnReiniciarQuiz = document.getElementById("reiniciar");
 const btnConcluirQuiz = document.getElementById("timeStop");
+const btnContinuarQuiz = document.getElementById("continue");
 
 const informacoesUser = [];
 
@@ -34,6 +35,17 @@ function mostrarTela(arr) {
     idHome.hidden = arr[0];
     idQuiz.hidden = arr[1];
     idResult.hidden = arr[2];
+}
+
+function hiddenButtons(boolean) {
+    if(!(document.getElementById("quiz").hidden)) {
+        btnConcluirQuiz.hidden = boolean;
+        btnReiniciarQuiz.hidden = boolean;
+    }
+}
+
+function showBtnContinue() {
+    btnContinuarQuiz.hidden = false;
 }
 
 // Coletar dados form home
@@ -77,9 +89,10 @@ function criarQuestoes() {
     const areasQuestoes = document.getElementById("questoes");
     let questoes = pegarTema();
     
+    let i = 1;
     for(let questao of questoes) {
         areasQuestoes.innerHTML += `
-            <fieldset class="questao">
+            <fieldset class="questao" id="f${i}">
                 <legend>${questao.pergunta}</legend>
                 <input type="radio" name="${questao.identificador}" value="alternativaA"><label for="alternativaA">${questao.alternativaA}</label><br>
                 <input type="radio" name="${questao.identificador}" value="alternativaB"><label for="alternativaB">${questao.alternativaB}</label><br>
@@ -87,6 +100,7 @@ function criarQuestoes() {
                 <input type="radio" name="${questao.identificador}" value="alternativaD"><label for="alternativaD">${questao.alternativaD}</label><br>
             </fieldset>
         `;
+        i++;
     }
 }
 
@@ -111,6 +125,7 @@ function mudarTitulo () {
 // Botão Iniciar
 btnIniciar.addEventListener("click", () => {
     mostrarTela(quiz);
+    hiddenButtons(false);
     coletarForm();
     criarQuestoes();
     mudarTitulo();
@@ -126,28 +141,43 @@ btnReiniciarQuiz.addEventListener("click", ()=> {
 
 //Validação das questões
 function validarRespostas() {
-    let questoes = pegarTema(); // var que armazena o retorno de pegarTema que é o vetor de objetos do tema que o usuario selecionou na home
-    let pontuacao = 0; // var para pontuacao, inicia zerada
-    
-    for(let questao of questoes) { //iteração em cada objeto do vetor "objetos"
-        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); // (querySelector pega todas as alternativas com mesmo name, ou seja, da mesma questão, porém só a que estiver checked (selecionada pelo usuário))
-        if (!selecionada) { // caso a questao estiver sem resposta, "selecionada" tem valor "null"
+    let questoes = pegarTema();
+    let pontuacao = 0; 
+    let i = 0;
+
+    for(let questao of questoes) { 
+        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
+        //verifica se todas foram selecionadas
+        if (!selecionada) { 
             alert("Por favor, responda todas as questões antes de continuar.");
-            return; // este return indica que a função não executa as linhas abaixo
+            return; 
         }
-        let resposta = selecionada.value; // var que armazena o valor do input (alternativaA, alternativaB...)
-        if(resposta === questao.correta) { // se a resposta for igual a questao correta ("correta" é uma proprieda do objeto de cada questão em cada tema),
-            pontuacao += 1; //a postuação é soma com mais 1
+        let resposta = selecionada.value; 
+        //valida as questões
+        if(resposta === questao.correta) {
+            pontuacao += 1; 
+            document.getElementById(`f${i+1}`).style.background = 'rgba(0, 255, 42, 0.2)';
         }
+        else {
+            document.getElementById(`f${i+1}`).style.background = 'rgba(255, 0, 0, 0.2)';
+        }
+        i++;
     }
     pararCronometro();
-    return pontuacao; // função retorna um inteiro, que é a quantidade de questões corretas que o usuário acertou
+    hiddenButtons(true);
+    showBtnContinue();
+    return pontuacao; 
 }
 //lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
+
 // Botão concluir QUIZ
 btnConcluirQuiz.addEventListener("click", ()=> {
     validarRespostas();
-    console.log(validarRespostas());
+});
+
+// Botão continuar QUIZ
+btnContinuarQuiz.addEventListener("click", () => {
+    mostrarTela(resultado);
 });
 
 //========= Main =============================
