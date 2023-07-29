@@ -124,11 +124,12 @@ function mudarTitulo () {
 
 // Botão Iniciar
 btnIniciar.addEventListener("click", () => {
-    mostrarTela(quiz);
-    hiddenButtons(false);
+    // CUIDADO A ORDEM PODE QUEBRAR O CÓDIGO
     coletarForm();
+    validarHome();
     criarQuestoes();
     mudarTitulo();
+    hiddenButtons(false);
 });
 
 // Botão Reiniciar QUIZ
@@ -138,6 +139,20 @@ btnReiniciarQuiz.addEventListener("click", ()=> {
     destruirQuestoes();
     
 });
+
+// validarHome tem função de required.
+function validarHome() {
+    let numUser = informacoesUser.length-1;
+    let tema = informacoesUser[numUser].tema;
+    let nome = informacoesUser[numUser].nome;
+
+    if ( tema == "-- Selecione um Tema --" || nome == '') {
+        alert('Selecione um tema ou Coloque o nome');
+        deletarInformacao();
+    } else {
+        mostrarTela(quiz);
+    }
+}
 
 //Validação das questões
 function validarRespostas() {
