@@ -14,7 +14,7 @@ body{
     justify-content: center;
     background-color: #fafafa;
     transition: 0.2s linear;
-    height: 100vh;
+    height: 100vh; 
 }
 
 body h1{
@@ -28,8 +28,26 @@ body p{
     font-weight: 400;
 }
 
-body.dark {
-    background: var(--cordarkmode); 
+button:hover {
+    opacity: 0.8;
+}
+
+
+
+.container-header{
+    display: flex;
+    justify-content: space-around;
+    background-color: #fafafa;
+    box-shadow: 0.5px 0.5px 10px 0.5px #000;
+    max-width: 100vw;
+    width: 100%;
+    height: 42px;
+    position: absolute;
+    left: 0;
+}
+
+button:hover {
+    opacity: 0.8;
 }
 
 
@@ -45,40 +63,42 @@ body.dark {
     left: 0;
 }
 
-header .timer{
-    display: flex;
-    align-items: center;
+body.dark {
+    background: var(--cordarkmode); 
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1080px;
-}
-
-section{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    margin-top: 6%;
-}
+/**************************************************************/
 
 [hidden]{
     display:none; /*Flexbox impede que "hidden" funcione*/
                 /*Portanto, não pode haver display: flex no #home, #quiz e #result*/
 }
 
-/* Estilização Home Quiz */
+/**************** Estilização Home Quiz ****************/
 
-#home{
-    /*display:flex;*/
+.container{
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* border: 5px solid black; */
+    width: 100%;
+    max-width: 1080px;
+    height: 100%;
 }
 
+header .timer{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-top: 6%;
+}
+
+
+.home{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95dvh;
+}
 
 .card{
     border: 1px solid rgb(160, 160, 160);
@@ -91,13 +111,11 @@ section{
 
 .card h1{
     margin: 10px 10px 20px 10px;
-    /* border: 1px solid black; */
 }
 
 .card p {
     margin-bottom: 10px;
     font-weight: 500;
-    /* border: 1px solid black; */
 }
 
 .formulario{
@@ -132,7 +150,11 @@ section{
     margin: 20px 0 20px 0;
     padding: 10px 0 10px 0;
     width: 80%;
-    background-color: rgb(134, 134, 134);
+    background-color: #0064ED;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 #questoes {
@@ -155,8 +177,8 @@ section{
     font-size: 18px;
 }
 
-
 /*Estilização botao switch   */
+
 
 .switch-wrapper{
     position: relative;
@@ -254,4 +276,110 @@ section{
 
 .dark #timeStop {
     color: #fafafa;
+}
+/********** Estilização Page Result *****************/
+
+.result{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+}
+
+.tabelaResultado{
+    margin: 20px 0;
+    width: 80%;
+    border: 1px solid;
+    border-collapse: separate; 
+    border-spacing: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.tabelaResultado th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #F8F8F8;
+    color: black;
+}
+
+.tabelaResultado td, .tabelaResultado th{ 
+    padding: 8px;
+}
+
+.tabelaResultado tr:first-child td { border-top-style: solid;}
+
+.tabelaResultado tr:nth-child(even){background-color: #f2f2f2;}
+
+.tabelaResultado tr:hover {background-color: #ddd;}
+
+.medias{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    padding: 10px 0px 10px 0px;
+    
+}
+.acertos{
+    background-color: #0ff153;
+    padding: 10px 18px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+}
+
+.erros{
+    background-color: red;
+    padding: 10px 18px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-weight: 400;
+}
+
+.rank{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px 0px;
+}
+
+.ranking {
+    border: 1px solid #454B54;
+    border-radius: 10px;
+    border-collapse: separate;
+}
+
+.ranking th{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #F2F4FF;
+        color: black;
+        font-weight: 500;
+}
+
+.ranking td, .ranking th{ 
+    padding: 8px 16px;
+}
+
+.result button{
+        background-color: #0064ED;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
