@@ -15,8 +15,9 @@
 
 <body>
     <div class="container">
-        <!-- light mode button -->
-        <header>
+        <!-- switch mode button -->
+
+        <header class="navbar">
             <div class="botao-switch">
                 <label class="switch-wrapper" for="chk">
                     <input type="checkbox" id="chk">
@@ -26,93 +27,199 @@
                     </div>
                 </label>
             </div>
-
+            <!-- cronômetro -->
             <div class="timer">
                 <p>Tempo: <span id="cronometro">00:00:00</span></p>
             </div>
         </header>
         <!-- Inicio home quiz -->
-        <section id="home" class="home" hidden>
 
-            <div class="card">
-                <h1>Quiz</h1>
-                <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
-                <form class="formulario">
-                    <label for="name">Nome</label>
-                    <input id="nome" type="text" placeholder="Nome usuário" name="uname" required>
-                    <label>Tema</label>
-                    <select id="tema">
-                        <option disabled selected>-- Selecione um Tema --</option>
-                        <option value="HTML">HTML</option>
-                        <option value="CSS">CSS</option>
-                        <option value="JavaScript">JavaScript</option>
-                    </select>
-                    <button type="button" id="btnIniciar" class="timeStart selecao">Iniciar</button>
-                </form>
-            </div>
-        </section>
+        <div id="home" hidden>
+            <section class="home">
+                <div class="card">
+                    <h1>Quiz</h1>
+                    <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
+                    <form class="formulario">
+                        <label for="name">Nome</label>
+                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" required>
+                        <label>Tema</label>
+                        <select id="tema">
+                            <option disabled selected>-- Selecione um Tema --</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="JavaScript">JavaScript</option>
+                        </select>
+                        <button type="button" id="btnIniciar" class="timeStart selecao">Iniciar</button>
+                    </form>
+                </div>
+            </section>
+        </div>
         <!-- Fim home quiz -->
 
         <!-- Inicio seçao questões quiz -->
+        <div id="quiz" hidden>
+            <section>
+                <h1>Quiz - <span id="quizTema"></span></h1>
+                <article>
+                    <div>
+                        <form id="questoes">
 
-        <section id="quiz" hidden>
-            <h1>Quiz - <span id="quizTema"></span></h1>
-            <article>
-                <div>
-                    <form id="questoes">
-
-                    </form>
-                </div>
-                <button type="button" id="timeStop">Concluir</button>
-                <button type="button" class="timeStart" id="reiniciar">Reniciar</button>
-            </article>
-            <!-- cronômetro -->
-
-        </section>
+                        </form>
+                    </div>
+                    <button type="button" id="timeStop">Concluir</button>
+                    <button type="button" class="timeStart" id="reiniciar">Reniciar</button>
+                </article>
+            </section>
+        </div>
         <!-- Fim seçao questões quiz -->
-
         <!--Inicio seção resultado -->
-        <section id="result" hidden>
-            <h1>Resultado</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Tema</th>
-                        <th>Tempo</th>
-                        <th>Data Quiz</th>
-                        <th>Pontuação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> </td> <!-- Por enquanto vazio para implementação futura no JavaScript -->
-                    </tr>
-                </tbody>
-            </table>
-            <div>
-                <span>Media de Acertos</span>
-            </div>
-            <div>
-                <span>Media de erros</span>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Tema X</th>
-                        <th>Tema Y</th>
-                        <th>Tema Z</th>
-                    </tr>
-                </thead>
+        <div id="result" hidden>
+            <section class="result">
+                <h1>Resultado</h1>
 
-                <tbody>
-                    <tr>
-                        <td> </td> <!-- Por enquanto vazio para implementação futura no JavaScript -->
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button">Reniciar</button>
-        </section>
+                <table class="tabelaResultado">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tema</th>
+                            <th>Tempo</th>
+                            <th>Data Quiz</th>
+                            <th>Pontuação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                    </tbody>
+                </table>
+
+                <div class="medias">
+                    <div class="acertos">
+                        <span>Media de Acertos</span>
+                        <span>$$</span>
+                    </div>
+
+                    <div class="erros">
+                        <span>Media de erros</span>
+                        <span>$$</span>
+                    </div>
+                </div>
+
+                <div class="rank">
+                    <table class="ranking">
+                        <thead>
+                            <tr>
+                                <th>Tema X</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="ranking">
+                        <thead>
+                            <tr>
+                                <th>Tema Y</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="ranking">
+                        <thead>
+                            <tr>
+                                <th>Tema Z</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button type="button">Reniciar</button>
+
+            </section>
+        </div>
+
         <!--Fim seção resultado -->
         <script type="module" src="script/script.js"></script>
         <script src="script/cronometro.js"></script>
