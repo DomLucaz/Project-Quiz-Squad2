@@ -79,7 +79,7 @@ function criarQuestoes() {
     
     for(let questao of questoes) {
         areasQuestoes.innerHTML += `
-            <fieldset>
+            <fieldset class="questao">
                 <legend>${questao.pergunta}</legend>
                 <input type="radio" name="${questao.identificador}" value="alternativaA"><label for="alternativaA">${questao.alternativaA}</label><br>
                 <input type="radio" name="${questao.identificador}" value="alternativaB"><label for="alternativaB">${questao.alternativaB}</label><br>
