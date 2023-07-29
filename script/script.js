@@ -2,7 +2,8 @@
 import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
-import { pararCronometro } from "./cronometro.js";
+import {pararCronometro} from "./cronometro.js";
+import { quizResults } from "./populate.JS";
 
 //========= Declarações =============================
 
@@ -16,6 +17,7 @@ const btnIniciar = document.getElementById("btnIniciar");
 const btnReiniciarQuiz = document.getElementById("reiniciar");
 const btnConcluirQuiz = document.getElementById("timeStop");
 const btnContinuarQuiz = document.getElementById("continue");
+const btnReiniciarResult = document.getElementById("inicio");
 
 const informacoesUser = [];
 
@@ -44,13 +46,13 @@ function hiddenButtons(boolean) {
     }
 }
 
-function showBtnContinue() {
-    btnContinuarQuiz.hidden = false;
+function showBtnContinue(boolean) {
+    btnContinuarQuiz.hidden = boolean;
 }
 
 // Coletar dados form home
 function coletarForm() {
-    const nome = document.getElementById("nome").value; 
+    const nome = document.getElementById("nome").value;
     const tema = document.getElementById("tema").value;
     const data = new Date().toLocaleDateString();
     const hora = new Date().toLocaleTimeString();
@@ -61,14 +63,16 @@ function coletarForm() {
         data: data,
         hora: hora,
         pontuacao: null,
+        tempo: document.getElementById("cronometro").innerText,
     };
 
     informacoesUser.push(dadosForm);
 }
 
+
 // Pegar Tema
 function pegarTema() {
-    let valorTema = informacoesUser[0].tema;
+    let valorTema = informacoesUser[informacoesUser.length-1].tema;
     let nomeQuestõesTema = "none";
 
     if (valorTema == "HTML") {
@@ -119,7 +123,7 @@ function deletarInformacao () {
 // Mudar título do QUIZ
 function mudarTitulo () {
     const tituloQuiz = document.getElementById("quizTema");
-    tituloQuiz.innerHTML = informacoesUser[0].tema;
+    tituloQuiz.innerHTML = informacoesUser[informacoesUser.length-1].tema;
 }
 
 // Botão Iniciar
@@ -137,7 +141,6 @@ btnReiniciarQuiz.addEventListener("click", ()=> {
     mostrarTela(home);
     deletarInformacao();
     destruirQuestoes();
-    
 });
 
 // validarHome tem função de required.
@@ -180,7 +183,9 @@ function validarRespostas() {
     }
     pararCronometro();
     hiddenButtons(true);
-    showBtnContinue();
+    showBtnContinue(false);
+
+    informacoesUser[informacoesUser.length-1].pontuacao = pontuacao; 
     return pontuacao; 
 }
 //lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
@@ -188,12 +193,37 @@ function validarRespostas() {
 // Botão concluir QUIZ
 btnConcluirQuiz.addEventListener("click", ()=> {
     validarRespostas();
+    console.log(pontuacao);
+
 });
 
 // Botão continuar QUIZ
 btnContinuarQuiz.addEventListener("click", () => {
     mostrarTela(resultado);
+    const tabelaResultado = document.querySelector(".tabelaResultado tbody");
+    const dadosUsuario = informacoesUser[informacoesUser.length-1];
+    const newRow = tabelaResultado.insertRow();
+
+
+    newRow.innerHTML = `
+        <td>${dadosUsuario.nome}</td>
+        <td>${dadosUsuario.tema}</td>
+        <td>${pararCronometro()}</td>
+        <td>${dadosUsuario.data} ${dadosUsuario.hora}</td>
+        <td>${dadosUsuario.pontuacao}/10</td>
+    `;
+    console.log(informacoesUser);
+    showBtnContinue(true);
 });
+
+
+//Botão para voltar a página inicial 
+btnReiniciarResult.addEventListener ("click", () => {
+    mostrarTela(home);
+
+    destruirQuestoes();
+});
+
 
 //========= Main =============================
 
@@ -242,3 +272,4 @@ btnAudio.onclick = () => {
     // troca o ícone toda vez que clicamos no botão seguindo as funções play/pause
     btnAudio.innerHTML = audioSvg;  
 }
+
