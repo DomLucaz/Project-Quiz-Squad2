@@ -1,5 +1,6 @@
 let cronometro = 0; //valor inicial do cronômetro em segundos
 let idCronometro; // id do cronômetro para parar o setInterval
+let cronometroFormatado;
 
 //Atualizar cronômetro
 function atualizaCronometro() {
@@ -32,13 +33,15 @@ function atualizaCronometro() {
     }
 
     // Formata o cronômetro para o formato HH:MM:SS
-    const cronometroFormatado = horas + ":" + minutos + ":" + segundos;
+    cronometroFormatado = horas + ":" + minutos + ":" + segundos;
 
     // Pegando o elemento do cronômetro pelo ID
     const cronometroHTML = document.getElementById("cronometro");
 
     // Atualizando o cronômetro no HTML
     cronometroHTML.innerHTML = cronometroFormatado;
+
+
 }
 
 // Função para iniciar o cronômetro
@@ -60,7 +63,7 @@ export function pararCronometro() {
     clearInterval(idCronometro);
 
     // Retornando o valor do cronômetro
-    return cronometro;
+    return cronometroFormatado;
 }
 
 const timeStart = document.querySelectorAll(".timeStart");
