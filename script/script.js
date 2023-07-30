@@ -131,8 +131,6 @@ btnIniciar.addEventListener("click", () => {
     // CUIDADO A ORDEM PODE QUEBRAR O CÓDIGO
     coletarForm();
     validarHome();
-    criarQuestoes();
-    mudarTitulo();
     hiddenButtons(false);
     iniciarCronometro();
 });
@@ -155,7 +153,9 @@ function validarHome() {
         alert('Selecione um tema ou Coloque o nome');
         deletarInformacao();
     } else {
+        criarQuestoes();
         mostrarTela(quiz);
+        mudarTitulo();
     }
 }
 
