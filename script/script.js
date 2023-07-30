@@ -158,20 +158,26 @@ function validarHome() {
 }
 
 //Validação das questões
+//Validação das questões
 function validarRespostas() {
     let questoes = pegarTema();
     let pontuacao = 0; 
-    let i = 0;
 
-    for(let questao of questoes) { 
+    // Primeiro, verifique se todas as perguntas foram respondidas
+    for(let questao of questoes) {
         let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
-        //verifica se todas foram selecionadas
         if (!selecionada) { 
             alert("Por favor, responda todas as questões antes de continuar.");
             return; 
         }
+    }
+
+    // Se todas as perguntas foram respondidas, faça a validação e pintura
+    let i = 0;
+    for(let questao of questoes) { 
+        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
         let resposta = selecionada.value; 
-        //valida as questões
+
         if(resposta === questao.correta) {
             pontuacao += 1; 
             document.getElementById(`f${i+1}`).style.background = 'rgba(0, 255, 42, 0.2)';
