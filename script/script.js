@@ -132,7 +132,7 @@ btnIniciar.addEventListener("click", () => {
     coletarForm();
     validarHome();
     hiddenButtons(false);
-    iniciarCronometro();
+
 });
 
 // Botão Reiniciar QUIZ
@@ -155,6 +155,7 @@ function validarHome() {
     } else {
         criarQuestoes();
         mostrarTela(quiz);
+        iniciarCronometro();
         mudarTitulo();
     }
 }
