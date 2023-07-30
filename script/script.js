@@ -132,10 +132,8 @@ btnIniciar.addEventListener("click", () => {
     // CUIDADO A ORDEM PODE QUEBRAR O CÓDIGO
     coletarForm();
     validarHome();
-    criarQuestoes();
-    mudarTitulo();
     hiddenButtons(false);
-    iniciarCronometro();
+
 });
 
 // Botão Reiniciar QUIZ
@@ -156,7 +154,10 @@ function validarHome() {
         alert('Selecione um tema ou Coloque o nome');
         deletarInformacao();
     } else {
+        criarQuestoes();
         mostrarTela(quiz);
+        iniciarCronometro();
+        mudarTitulo();
     }
 }
 
@@ -199,6 +200,16 @@ function validarRespostas() {
 }
 //lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
 
+// Zerar form home
+const campoNome = document.getElementById("nome")
+const campoTema = document.getElementById("tema")
+
+function esvaziarCamposHome() {
+    campoNome.value = '';
+    campoTema[0].selected = true;
+}
+
+
 // Botão concluir QUIZ
 btnConcluirQuiz.addEventListener("click", ()=> {
     validarRespostas();
@@ -219,6 +230,7 @@ btnContinuarQuiz.addEventListener("click", () => {
 btnReiniciarResult.addEventListener ("click", () => {
     mostrarTela(home);
     destruirQuestoes();
+    esvaziarCamposHome();
 });
 
 function insertTableResults() {
@@ -249,7 +261,7 @@ function insightAcertos() {
 
     let tagMediaAcertos = document.getElementById("media-acertos");
     tagMediaAcertos.innerHTML = `${mediaPercent}%`;
-
+    
     return mediaPercent;
 }
 
@@ -318,14 +330,15 @@ mostrarTela(home);
 // achando os elementos no HTML
 
 const audio = document.getElementById("audio");
+audio.volume = 0.1;
 const btnAudio = document.getElementById("btn-audio");
 let audioSvg;
 let stopped = true;
 
-// função para dar play no som
-function playAudio() {
-    audio.play();
-    //atribui o ícone de "tocando" quando a função for chamada
+// função para dar volume no som
+function comVolume() {
+    audio.volume = 0.1;
+    //atribui o ícone de "com audio" quando a função for chamada
     audioSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
     <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
     <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
@@ -333,9 +346,9 @@ function playAudio() {
     </svg>`;
 }
 
-//função para pausar o som
-function pauseAudio() {
-    audio.pause();
+//função para deixar o som sem volume
+function semVolume() {
+    audio.volume = 0;
     //atribui o ícone de "sem som" quando a função for chamada
     audioSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-volume-mute-fill" viewBox="0 0 16 16">
     <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
@@ -345,12 +358,12 @@ function pauseAudio() {
 btnAudio.onclick = () => {
     if(stopped) {
         console.log("teste if", stopped)
-        playAudio();
+        comVolume();
         stopped = false;
     }
     else {
         console.log("teste else", stopped)
-        pauseAudio();
+        semVolume();
         stopped = true;
     }
     // troca o ícone toda vez que clicamos no botão seguindo as funções play/pause
