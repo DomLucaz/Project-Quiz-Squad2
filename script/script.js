@@ -3,7 +3,7 @@ import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
 import {pararCronometro} from "./cronometro.js";
-import { quizResults } from "./populate.JS";
+
 
 //========= Declarações =============================
 
@@ -227,7 +227,7 @@ btnReiniciarResult.addEventListener ("click", () => {
 
 //========= Main =============================
 
-mostrarTela(home)
+mostrarTela(home);
 
 //========= Trilha Sonora =====================
 
