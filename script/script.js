@@ -268,7 +268,7 @@ const btnAudio = document.getElementById("btn-audio");
 let audioSvg;
 let stopped = true;
 
-// função para dar play no som
+// função para dar volume no som
 function comVolume() {
     audio.volume = 0.1;
     //atribui o ícone de "com audio" quando a função for chamada
@@ -279,7 +279,7 @@ function comVolume() {
     </svg>`;
 }
 
-//função para pausar o som
+//função para deixar o som sem volume
 function semVolume() {
     audio.volume = 0;
     //atribui o ícone de "sem som" quando a função for chamada
