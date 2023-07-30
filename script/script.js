@@ -15,10 +15,11 @@ const resultado = [true, true, false];
 // Coletando os botões
 const btnIniciar = document.getElementById("btnIniciar");
 const btnReiniciarQuiz = document.getElementById("reiniciar");
-const btnConcluirQuiz = document.getElementById("timeStop");
+const btnConcluirQuiz = document.getElementById("concluir");
 const btnContinuarQuiz = document.getElementById("continue");
 const btnReiniciarResult = document.getElementById("inicio");
 
+//vetor para os dados dos usuários
 const informacoesUser = [];
 
 // Dark mode 
@@ -46,7 +47,7 @@ function hiddenButtons(boolean) {
     }
 }
 
-function showBtnContinue(boolean) {
+function ocultarBtnContinue(boolean) {
     btnContinuarQuiz.hidden = boolean;
 }
 
@@ -191,7 +192,7 @@ function validarRespostas() {
     }
     pararCronometro();
     hiddenButtons(true);
-    showBtnContinue(false);
+    ocultarBtnContinue(false);
 
     informacoesUser[informacoesUser.length-1].pontuacao = pontuacao; 
     return pontuacao; 
@@ -202,16 +203,28 @@ function validarRespostas() {
 btnConcluirQuiz.addEventListener("click", ()=> {
     validarRespostas();
     console.log(pontuacao);
-
 });
 
 // Botão continuar QUIZ
 btnContinuarQuiz.addEventListener("click", () => {
     mostrarTela(resultado);
+    insertTableResults();
+    ocultarBtnContinue(true);
+    insightAcertos();
+    insightsErros();
+    ranking();
+});
+
+//Botão para voltar a página inicial 
+btnReiniciarResult.addEventListener ("click", () => {
+    mostrarTela(home);
+    destruirQuestoes();
+});
+
+function insertTableResults() {
     const tabelaResultado = document.querySelector(".tabelaResultado tbody");
     const dadosUsuario = informacoesUser[informacoesUser.length-1];
     const newRow = tabelaResultado.insertRow();
-
 
     newRow.innerHTML = `
         <td>${dadosUsuario.nome}</td>
@@ -220,29 +233,82 @@ btnContinuarQuiz.addEventListener("click", () => {
         <td>${dadosUsuario.data} ${dadosUsuario.hora}</td>
         <td>${dadosUsuario.pontuacao}/10</td>
     `;
-    console.log(informacoesUser);
-    showBtnContinue(true);
-});
+}
 
+//Função para mostrar os insights (média por acertos)
+function insightAcertos() {
+    let todasPontuacoes = 0;
+    for(let i = 0; i < informacoesUser.length; i++) {
+        todasPontuacoes += informacoesUser[i].pontuacao;
+    }
 
-//Botão para voltar a página inicial 
-btnReiniciarResult.addEventListener ("click", () => {
-    mostrarTela(home);
-    destruirQuestoes();
-});
+    let mediaPontuacoes = todasPontuacoes / informacoesUser.length;
+    mediaPontuacoes /= 10;
+    let mediaLtda = mediaPontuacoes.toFixed(4);
+    let mediaPercent = Number(mediaLtda) * 100;
 
-//Função para mostrar os insights (média por acertos e erros)
-function mostrarInsights() {
+    let tagMediaAcertos = document.getElementById("media-acertos");
+    tagMediaAcertos.innerHTML = `${mediaPercent}%`;
 
+    return mediaPercent;
+}
+
+function insightsErros() {
+    let mediaErros = 100 - insightAcertos();
+
+    let tagMediaErros = document.getElementById("media-erros");
+    tagMediaErros.innerHTML = `${mediaErros}%`;
 }
 
 //Função para o Ranking (por tema)
 function ranking() {
-    let rankingHTML = [];
-    let rankingCSS = [];
-    let rankingJS = [];
+    let listaHTML = document.getElementById("tema-html");
+    let listaCSS = document.getElementById("tema-css");
+    let listaJS = document.getElementById("tema-js");
 
+    // Inicializa objetos para armazenar a pontuação mais recente para cada usuário
+    let pontuacaoHTML = {};
+    let pontuacaoCSS = {};
+    let pontuacaoJS = {};
+
+    for(let i = 0; i < informacoesUser.length; i++) {
+        if(informacoesUser[i].tema == 'HTML') {
+            pontuacaoHTML[informacoesUser[i].nome] = informacoesUser[i].pontuacao;
+        } else if(informacoesUser[i].tema == 'CSS') {
+            pontuacaoCSS[informacoesUser[i].nome] = informacoesUser[i].pontuacao;
+        } else {
+            pontuacaoJS[informacoesUser[i].nome] = informacoesUser[i].pontuacao;
+        }
+    }
+
+    // Função para gerar o HTML da lista a partir de um objeto de pontuações
+    function generateListHTML(arrayPontos) {
+        let html = '';
+        for(let [nome, pontos] of arrayPontos) {
+            html += `<li>${nome} - ${pontos}/10</li>\n`;
+        }
+        return html;
+    }
+
+    //transformando os objetos em vetores
+    let arrayPontuacaoHTML = Object.entries(pontuacaoHTML);
+    let arrayPontuacaoCSS = Object.entries(pontuacaoCSS);
+    let arrayPontuacaoJS = Object.entries(pontuacaoJS);
+
+    //elaborando a ordenação
+    function sortfunction(a, b){
+        return b[1] - a[1]; //faz com que o array seja ordenado numericamente e de ordem decrescente.
+    }
+    arrayPontuacaoHTML.sort(sortfunction); 
+    arrayPontuacaoCSS.sort(sortfunction); 
+    arrayPontuacaoJS.sort(sortfunction); 
+
+    // Atualiza o HTML das listas
+    listaHTML.innerHTML = generateListHTML(arrayPontuacaoHTML);
+    listaCSS.innerHTML = generateListHTML(arrayPontuacaoCSS);
+    listaJS.innerHTML = generateListHTML(arrayPontuacaoJS);
 }
+
 //========= Main =============================
 
 mostrarTela(home);
