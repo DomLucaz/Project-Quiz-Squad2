@@ -198,6 +198,16 @@ function validarRespostas() {
 }
 //lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
 
+// Zerar form home
+const campoNome = document.getElementById("nome")
+const campoTema = document.getElementById("tema")
+
+function esvaziarCamposHome() {
+    campoNome.value = '';
+    campoTema[0].selected = true;
+}
+
+
 // Botão concluir QUIZ
 btnConcluirQuiz.addEventListener("click", ()=> {
     validarRespostas();
@@ -229,6 +239,7 @@ btnContinuarQuiz.addEventListener("click", () => {
 btnReiniciarResult.addEventListener ("click", () => {
     mostrarTela(home);
     destruirQuestoes();
+    esvaziarCamposHome();
 });
 
 //Função para mostrar os insights (média por acertos e erros)
