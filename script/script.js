@@ -2,8 +2,7 @@
 import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
-import {pararCronometro} from "./cronometro.js";
-import {iniciarCronometro}  from "./cronometro.js"
+import { pararCronometro, iniciarCronometro } from "./cronometro.js";
 
 //========= Declarações =============================
 
@@ -13,14 +12,22 @@ const quiz = [true, false, true];
 const resultado = [true, true, false];
 
 // Coletando os botões
-const btnIniciar = document.getElementById("btnIniciar");
+const btnIniciar = document.getElementById("btnIniciar"); //id chamado de btn é redundante
 const btnReiniciarQuiz = document.getElementById("reiniciar");
 const btnConcluirQuiz = document.getElementById("concluir");
 const btnContinuarQuiz = document.getElementById("continue");
 const btnReiniciarResult = document.getElementById("inicio");
 
+const idHome = document.getElementById("home"); //nome da constante com "id" é reduntane
+const idQuiz = document.getElementById("quiz");
+const idResult= document.getElementById("result");
+const idNomeForm = document.getElementById("nome");
+const idTemaForm = document.getElementById("tema");
+
 //vetor para os dados dos usuários
 const informacoesUser = [];
+
+const areasQuestoes = document.getElementById("questoes");
 
 // Dark mode 
 const chk = document.getElementById("chk");
@@ -31,17 +38,13 @@ document.body.classList.toggle("dark") // Toggle -> mostra ou oculta um elemento
 
 // Hidden
 function mostrarTela(arr) {
-    const idHome = document.getElementById("home");
-    const idQuiz = document.getElementById("quiz");
-    const idResult= document.getElementById("result");
-    
     idHome.hidden = arr[0];
     idQuiz.hidden = arr[1];
     idResult.hidden = arr[2];
 }
 
 function hiddenButtons(boolean) {
-    if(!(document.getElementById("quiz").hidden)) {
+    if(!(idQuiz.hidden)) {
         btnConcluirQuiz.hidden = boolean;
         btnReiniciarQuiz.hidden = boolean;
     }
@@ -53,10 +56,12 @@ function ocultarBtnContinue(boolean) {
 
 // Coletar dados form home
 function coletarForm() {
-    const nome = document.getElementById("nome").value;
-    const tema = document.getElementById("tema").value;
+    const nome = idNomeForm.value;
+    const tema = idTemaForm.value;
     const data = new Date().toLocaleDateString();
     const hora = new Date().toLocaleTimeString();
+
+    const idCronometro = document.getElementById("cronometro");
 
     const dadosForm = {
         nome: nome,
@@ -64,7 +69,7 @@ function coletarForm() {
         data: data,
         hora: hora,
         pontuacao: null,
-        tempo: document.getElementById("cronometro").innerText,
+        tempo: idCronometro.innerText,
     };
 
     informacoesUser.push(dadosForm);
@@ -73,7 +78,8 @@ function coletarForm() {
 
 // Pegar Tema
 function pegarTema() {
-    let valorTema = informacoesUser[informacoesUser.length-1].tema;
+    let numElementoUser = informacoesUser.length-1; // Não dá para tirar esta linha
+    let valorTema = informacoesUser[numElementoUser].tema;
     let nomeQuestõesTema = "none";
 
     if (valorTema == "HTML") {
@@ -91,7 +97,6 @@ function pegarTema() {
 
 // Criar questões
 function criarQuestoes() {
-    const areasQuestoes = document.getElementById("questoes");
     let questoes = pegarTema();
     
     let i = 1;
@@ -111,8 +116,6 @@ function criarQuestoes() {
 
 // Destruir questões
 function destruirQuestoes() {
-    const areasQuestoes = document.getElementById("questoes");
-    
     areasQuestoes.innerHTML = '';
 }
 
@@ -164,45 +167,41 @@ function validarHome() {
 //Validação das questões
 //Validação das questões
 function validarRespostas() {
-    let questoes = pegarTema();
-    let pontuacao = 0; 
+    const questoes = pegarTema();
+    let pontuacao = 0;
 
-    // Primeiro, verifique se todas as perguntas foram respondidas
-    for(let questao of questoes) {
-        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
-        if (!selecionada) { 
+    // Verifique se todas as perguntas foram respondidas
+    for (let i = 0; i < questoes.length; i++) {
+        const questao = questoes[i];
+        const selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`);
+
+        if (!selecionada) {
             alert("Por favor, responda todas as questões antes de continuar.");
-            return; 
+            return;
+        }
+
+        const resposta = selecionada.value;
+
+        if (resposta === questao.correta) {
+            pontuacao += 1;
+            document.getElementById(`f${i + 1}`).style.background = 'rgba(0, 255, 42, 0.2)';
+        } else {
+            document.getElementById(`f${i + 1}`).style.background = 'rgba(255, 0, 0, 0.2)';
         }
     }
 
-    // Se todas as perguntas foram respondidas, faça a validação e pintura
-    let i = 0;
-    for(let questao of questoes) { 
-        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
-        let resposta = selecionada.value; 
-
-        if(resposta === questao.correta) {
-            pontuacao += 1; 
-            document.getElementById(`f${i+1}`).style.background = 'rgba(0, 255, 42, 0.2)';
-        }
-        else {
-            document.getElementById(`f${i+1}`).style.background = 'rgba(255, 0, 0, 0.2)';
-        }
-        i++;
-    }
     pararCronometro();
     hiddenButtons(true);
     ocultarBtnContinue(false);
 
-    informacoesUser[informacoesUser.length-1].pontuacao = pontuacao; 
-    return pontuacao; 
+    informacoesUser[informacoesUser.length - 1].pontuacao = pontuacao;
+    return pontuacao;
 }
 //lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
 
 // Zerar form home
-const campoNome = document.getElementById("nome")
-const campoTema = document.getElementById("tema")
+const campoNome = document.getElementById("nome");
+const campoTema = document.getElementById("tema");
 
 function esvaziarCamposHome() {
     campoNome.value = '';
@@ -213,7 +212,6 @@ function esvaziarCamposHome() {
 // Botão concluir QUIZ
 btnConcluirQuiz.addEventListener("click", ()=> {
     validarRespostas();
-    console.log(pontuacao);
 });
 
 // Botão continuar QUIZ
@@ -283,7 +281,7 @@ function ranking() {
     let pontuacaoCSS = {};
     let pontuacaoJS = {};
 
-    for(let i = 0; i < informacoesUser.length; i++) {
+    for(let i = 0; i < informacoesUser.length; i++) {// aqui dá para usar swittich??
         if(informacoesUser[i].tema == 'HTML') {
             pontuacaoHTML[informacoesUser[i].nome] = informacoesUser[i].pontuacao;
         } else if(informacoesUser[i].tema == 'CSS') {
