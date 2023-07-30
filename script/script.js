@@ -69,6 +69,12 @@ function coletarForm() {
     informacoesUser.push(dadosForm);
 }
 
+// Mostrar cronômetro
+const idCronometro = document.getElementById("hidden");
+
+function mostrarCronometro(boolean) {
+    idCronometro.hidden = boolean;
+}
 
 // Pegar Tema
 function pegarTema() {
@@ -154,6 +160,7 @@ function validarHome() {
         deletarInformacao();
     } else {
         mostrarTela(quiz);
+        mostrarCronometro(false);
     }
 }
 
@@ -220,6 +227,7 @@ btnContinuarQuiz.addEventListener("click", () => {
     `;
     console.log(informacoesUser);
     showBtnContinue(true);
+    mostrarCronometro(true);
 });
 
 
