@@ -226,11 +226,21 @@ btnContinuarQuiz.addEventListener("click", () => {
 //Botão para voltar a página inicial 
 btnReiniciarResult.addEventListener ("click", () => {
     mostrarTela(home);
-
     destruirQuestoes();
 });
 
+//Função para mostrar os insights (média por acertos e erros)
+function mostrarInsights() {
 
+}
+
+//Função para o Ranking (por tema)
+function ranking() {
+    let rankingHTML = [];
+    let rankingCSS = [];
+    let rankingJS = [];
+
+}
 //========= Main =============================
 
 mostrarTela(home);
