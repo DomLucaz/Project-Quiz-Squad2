@@ -3,7 +3,7 @@ import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
 import {pararCronometro} from "./cronometro.js";
-
+import {iniciarCronometro}  from "./cronometro.js"
 
 //========= Declarações =============================
 
@@ -134,6 +134,7 @@ btnIniciar.addEventListener("click", () => {
     criarQuestoes();
     mudarTitulo();
     hiddenButtons(false);
+    iniciarCronometro();
 });
 
 // Botão Reiniciar QUIZ
@@ -141,6 +142,7 @@ btnReiniciarQuiz.addEventListener("click", ()=> {
     mostrarTela(home);
     deletarInformacao();
     destruirQuestoes();
+    pararCronometro();
 });
 
 // validarHome tem função de required.

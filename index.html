@@ -30,7 +30,7 @@
                 </div>
                 <!-- cronômetro -->
                 <div class="timer">
-                    <p>Tempo: <span id="cronometro">00:00:00</span></p>
+                    <span id="cronometro"></span>
                 </div>
                 <!-- Trilha sonora -->
                 <div>
@@ -69,7 +69,7 @@
                             <option value="CSS">CSS</option>
                             <option value="JavaScript">JavaScript</option>
                         </select>
-                        <button type="button" id="btnIniciar" class="timeStart selecao">Iniciar</button>
+                        <button type="button" id="btnIniciar" class="selecao">Iniciar</button>
                     </form>
                 </div>
             </section>
@@ -87,7 +87,7 @@
                         </form>
                     </div>
                     <div class="btn-questao"> 
-                        <button type="button" class="timeStart" id="reiniciar" hidden>Reniciar</button>
+                        <button type="button" id="reiniciar" hidden>Reniciar</button>
                         <button type="button" id="timeStop" hidden>Concluir</button>
                         <button type="button" id="continue" hidden>Continuar</button>
                     </div>
@@ -112,39 +112,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            
                     </tbody>
                 </table>
 
@@ -161,81 +141,26 @@
                 </div>
 
                 <div class="rank">
-                    <table class="ranking">
-                        <thead>
-                            <tr>
-                                <th>Tema X</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="ranking">
-                        <thead>
-                            <tr>
-                                <th>Tema Y</th>
-                            </tr>
-                        </thead>
+                    <h2>Tema HTML</h2>
+                    <ol id="tema-html">
+                        <li>Felipe</li>
+                        <li></li>
+                        <li></li>
+                    </ol>
 
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h2>Tema CSS</h2>
+                    <ol id="tema-css">
+                        <li>felipe</li>
+                        <li></li>
+                        <li></li>
+                    </ol>
 
-                    <table class="ranking">
-                        <thead>
-                            <tr>
-                                <th>Tema Z</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h2>Tema JS</h2>
+                    <ol id="tema-js">
+                        <li>felipe</li>
+                        <li></li>
+                        <li></li>
+                    </ol>
                 </div>
 
                 <button type="button" id="inicio">Reniciar</button>
@@ -247,7 +172,7 @@
     </div>
 
     <script type="module" src="script/script.js"></script>
-    <script src="script/cronometro.js"></script>
+
 </body>
 
 </html>
