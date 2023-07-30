@@ -266,9 +266,9 @@ const audio = document.getElementById("audio");
 audio.volume = 0.1;
 const btnAudio = document.getElementById("btn-audio");
 let audioSvg;
-let mute = true;
+let stopped = true;
 
-// função para dar play no som
+// função para dar volume no som
 function comVolume() {
     audio.volume = 0.1;
     //atribui o ícone de "com audio" quando a função for chamada
@@ -279,7 +279,7 @@ function comVolume() {
     </svg>`;
 }
 
-//função para pausar o som
+//função para deixar o som sem volume
 function semVolume() {
     audio.volume = 0;
     //atribui o ícone de "sem som" quando a função for chamada
@@ -289,7 +289,7 @@ function semVolume() {
 }
 // stopped inicia como verdade então o primeiro clique vai entrar no if, dentro do if o valor de stopped vai mudar e no segundo clique ele vai entrar no else, e assim sucessivamente.
 btnAudio.onclick = () => {
-    if(mute) {
+    if(stopped) {
         console.log("teste if", stopped)
         comVolume();
         stopped = false;
@@ -297,7 +297,7 @@ btnAudio.onclick = () => {
     else {
         console.log("teste else", stopped)
         semVolume();
-        mute = true;
+        stopped = true;
     }
     // troca o ícone toda vez que clicamos no botão seguindo as funções play/pause
     btnAudio.innerHTML = audioSvg;  
