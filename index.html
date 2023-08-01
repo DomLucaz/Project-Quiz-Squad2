@@ -28,12 +28,12 @@
             </div>
             <!-- cronômetro -->
             <div class="timer">
-                <p>Tempo: <span id="cronometro">00:00:00</span></p>
+                <span id="cronometro"></span>
             </div>
             <!-- Trilha sonora -->
             <div class="box-audio">
                 <audio id="audio" preload="auto" lautoplay loop>
-                    <source src="som/trilha2.mp3" type="audio/mp3">
+                    <source src="som/trilhaSonora.mp3" type="audio/mp3">
                     Seu navegador não possui o elemento audio
                 </audio>
                 <button id="btn-audio" class="btn-mutePlay">
@@ -98,52 +98,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                     </tbody>
                 </table>
 
                 <div class="medias">
                     <div class="acertos">
                         <span>Media de Acertos</span>
-                        <span>$$</span>
+                        <span id="media-acertos"></span>
                     </div>
 
                     <div class="erros">
                         <span>Media de erros</span>
-                        <span>$$</span>
+                        <span id="media-erros"></span>
                     </div>
                 </div>
 
@@ -151,7 +117,7 @@
                     <table class="ranking">
                         <thead>
                             <tr>
-                                <th>HTML</th>
+                                <th id="tema-html">HTML</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -175,7 +141,7 @@
                     <table class="ranking">
                         <thead>
                             <tr>
-                                <th>CSS</th>
+                                <th id="tema-css">CSS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -200,7 +166,7 @@
                     <table class="ranking">
                         <thead>
                             <tr>
-                                <th>JavaScript</th>
+                                <th id="tema-js">JavaScript</th>
                             </tr>
                         </thead>
 
@@ -232,7 +198,7 @@
     </main>
 
     <script type="module" src="script/script.js"></script>
-    <script src="script/cronometro.js"></script>
+
 </body>
 
 </html>
