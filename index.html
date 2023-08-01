@@ -14,46 +14,37 @@
 
 
 <body>
-    <div class="container">
+    <header class="navbar">
         <!-- switch mode button -->
-
-        <header class="navbar">
-            <div class="container-header">
-                <div class="botao-switch">
-                    <label class="switch-wrapper" for="chk">
-                        <input type="checkbox" id="chk">
-                        <div class="switch">
-                            <i class="bi bi-moon-fill"></i>
-                            <i class="bi bi-sun-fill"></i>
-                        </div>
-                    </label>
-                </div>
-                <!-- cronômetro -->
-                <div class="timer">
-                    <p>Tempo: <span id="cronometro">00:00:00</span></p>
-                </div>
-                <!-- Trilha sonora -->
-                <div>
-                    <audio id="audio" preload="auto" autoplay loop>
-                        <source src="som/trilha2.mp3" type="audio/mp3">
-                        Seu navegador não possui o elemento audio
-                    </audio>
-                    <button id="btn-audio">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-volume-up-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z" />
-                            <path
-                                d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z" />
-                            <path
-                                d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z" />
-                        </svg>
-                    </button>
-                </div>
+        <nav>
+            <div class="b-switch">
+                <label class="switch-wrapper" for="chk">
+                    <input type="checkbox" id="chk">
+                    <div class="switch">
+                        <i class="bi bi-moon-fill "></i>
+                        <i class="bi bi-sun-fill "></i>
+                    </div>
+                </label>
             </div>
-        </header>
-        <!-- Inicio home quiz -->
+            <!-- cronômetro -->
+            <div class="timer">
+                <p>Tempo: <span id="cronometro">00:00:00</span></p>
+            </div>
+            <!-- Trilha sonora -->
+            <div class="box-audio">
+                <audio id="audio" preload="auto" lautoplay loop>
+                    <source src="som/trilha2.mp3" type="audio/mp3">
+                    Seu navegador não possui o elemento audio
+                </audio>
+                <button id="btn-audio" class="btn-mutePlay">
+                    <img src="assets/volume-mute.svg" width="22">
+                </button>
+            </div>
+        </nav>
+    </header>
 
+    <main class="container">
+        <!-- Inicio home quiz -->
         <div id="home" hidden>
             <section class="home">
                 <div class="card">
@@ -61,7 +52,7 @@
                     <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
                     <form class="formulario">
                         <label for="nome">Nome</label>
-                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="10">
+                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="">
                         <label>Tema</label>
                         <select id="tema">
                             <option disabled selected>-- Selecione um Tema --</option>
@@ -69,7 +60,7 @@
                             <option value="CSS">CSS</option>
                             <option value="JavaScript">JavaScript</option>
                         </select>
-                        <button type="button" id="btnIniciar" class="timeStart selecao">Iniciar</button>
+                        <button type="button" id="btnIniciar" class="btn-start">Iniciar</button>
                     </form>
                 </div>
             </section>
@@ -78,23 +69,19 @@
 
         <!-- Inicio seçao questões quiz -->
         <div id="quiz" hidden>
-            <section>
+            <section class="quizPage">
                 <h1>Quiz - <span id="quizTema"></span></h1>
-                <article>
-                    <div>
-                        <form id="questoes">
-
-                        </form>
-                    </div>
-                    <div class="btn-questao"> 
-                        <button type="button" class="timeStart" id="reiniciar" hidden>Reniciar</button>
-                        <button type="button" id="timeStop" hidden>Concluir</button>
-                        <button type="button" id="continue" hidden>Continuar</button>
-                    </div>
-                </article>
+                <form id="questoes" class="formQuiz">
+                </form>
+                <div class="btn-questao">
+                    <button type="button" id="reiniciar" class="btn-reiniciar" hidden>Reiniciar</button>
+                    <button type="button" id="concluir" class="btn-concluir" hidden>Concluir</button>
+                    <button type="button" id="continuar" class="btn-continuar" hidden>Continuar</button>
+                </div>
             </section>
         </div>
         <!-- Fim seçao questões quiz -->
+
         <!--Inicio seção resultado -->
         <div id="result" hidden>
             <section class="result">
@@ -164,7 +151,7 @@
                     <table class="ranking">
                         <thead>
                             <tr>
-                                <th>Tema X</th>
+                                <th>HTML</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -188,10 +175,9 @@
                     <table class="ranking">
                         <thead>
                             <tr>
-                                <th>Tema Y</th>
+                                <th>CSS</th>
                             </tr>
                         </thead>
-
                         <tbody>
                             <tr>
                                 <td></td>
@@ -214,7 +200,7 @@
                     <table class="ranking">
                         <thead>
                             <tr>
-                                <th>Tema Z</th>
+                                <th>JavaScript</th>
                             </tr>
                         </thead>
 
@@ -242,9 +228,8 @@
 
             </section>
         </div>
-
         <!--Fim seção resultado -->
-    </div>
+    </main>
 
     <script type="module" src="script/script.js"></script>
     <script src="script/cronometro.js"></script>

@@ -66,7 +66,7 @@ export function pararCronometro() {
     return cronometroFormatado;
 }
 
-const timeStart = document.querySelectorAll(".timeStart");
+const timeStart = document.querySelectorAll("#btnIniciar");
 
 for (let start of timeStart) {
     start.addEventListener("click", (evento) => {
