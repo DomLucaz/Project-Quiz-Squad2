@@ -329,19 +329,6 @@ mostrarTela(home);
 //========= Trilha Sonora =====================
 let stopped = true;
 
-// função para dar play no som
-function playAudio() {
-    audio.play();
-    //atribui o ícone de "tocando" quando a função for chamada
-    audioSvg = `<img src="assets/volume-up-fill.svg" width="22">`;
-}
-
-//função para pausar o som
-function pauseAudio() {
-    audio.pause();
-    //atribui o ícone de "sem som" quando a função for chamada
-    audioSvg = `<img src="assets/volume-mute.svg" width="22">`;
-}
 // stopped inicia como verdade então o primeiro clique vai entrar no if, dentro do if o valor de stopped vai mudar e no segundo clique ele vai entrar no else, e assim sucessivamente.
 btnAudio.onclick = () => {
     if(stopped) {
