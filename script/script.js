@@ -17,7 +17,7 @@ const resultado = [true, true, false];
 const btnIniciar = document.getElementById("btnIniciar"); //id chamado de btn é redundante
 const btnReiniciarQuiz = document.getElementById("reiniciar");
 const btnConcluirQuiz = document.getElementById("concluir");
-const btnContinuarQuiz = document.getElementById("continue");
+const btnContinuarQuiz = document.getElementById("continuar");
 const btnReiniciarResult = document.getElementById("inicio");
 
 const idHome = document.getElementById("home"); //nome da constante com "id" é reduntane
@@ -104,8 +104,9 @@ function criarQuestoes() {
     let i = 1;
     for(let questao of questoes) {
         areasQuestoes.innerHTML += `
-            <fieldset class="questao" id="f${i}">
-                <legend>${questao.pergunta}</legend>
+            <fieldset id="f${i}" class="campoQuiz">
+                <legend class="identificador">${questao.identificador}</legend>
+                <legend>${questao.pergunta}</legends><br>
                 <input type="radio" name="${questao.identificador}" value="alternativaA"><label for="alternativaA">${questao.alternativaA}</label><br>
                 <input type="radio" name="${questao.identificador}" value="alternativaB"><label for="alternativaB">${questao.alternativaB}</label><br>
                 <input type="radio" name="${questao.identificador}" value="alternativaC"><label for="alternativaC">${questao.alternativaC}</label><br>
@@ -328,6 +329,7 @@ mostrarTela(home);
 //========= Trilha Sonora =====================
 let stopped = true;
 
+// stopped inicia como verdade então o primeiro clique vai entrar no if, dentro do if o valor de stopped vai mudar e no segundo clique ele vai entrar no else, e assim sucessivamente.
 btnAudio.onclick = () => {
     if(stopped) {
         console.log("teste if", stopped)

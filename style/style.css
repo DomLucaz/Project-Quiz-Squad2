@@ -10,11 +10,12 @@
 
 body{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Karla', sans-serif;
     justify-content: center;
     background-color: #fafafa;
     transition: 0.2s linear;
-    height: 100vh; 
 }
 
 body h1{
@@ -30,22 +31,7 @@ body p{
 
 button:hover {
     opacity: 0.8;
-}
-
-.container-header{
-    display: flex;
-    justify-content: space-around;
-    background-color: #fafafa;
-    box-shadow: 0.5px 0.5px 10px 0.5px #000;
-    max-width: 100vw;
-    width: 100%;
-    height: 42px;
-    position: absolute;
-    left: 0;
-}
-
-button:hover {
-    opacity: 0.8;
+    transition: 0.5s;
 }
 
 body.dark {
@@ -59,35 +45,121 @@ body.dark {
                 /*Portanto, não pode haver display: flex no #home, #quiz e #result*/
 }
 
-/**************** Estilização Home Quiz ****************/
+/**************** Estilização Header ****************/
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    background-color: #fafafa;
+    box-shadow: 0.5px 0.5px 10px 0.5px #000;
+    padding: 6px 0 6px 0;
+    width: 100vw;
+    width: 100dvw;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    max-width: 1080px;
+}
+
+.timer{
+    display: flex;
+    align-items: center;
+}
+
+.box-audio{
+    display: flex;
+    align-items: center;
+}
+
+.btn-mutePlay{
+    border-radius: 40%;
+    padding: 6px;
+    border: none;
+    background-color: transparent;
+}
+
+.btn-mutePlay:hover{
+    background-color: rgba(199, 198, 198, 0.288);
+    transition: 0.5s;
+}
+
+/*************** Estilização botao switch   ************************/
+
+.switch-wrapper{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+}
+.switch-wrapper input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch{
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    border-radius: 34px;
+}
+
+.switch::before{
+    display: flex;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: rgb(240, 230, 146);
+    height: 30px;
+    width: 30px;
+    content: "";
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.switch-wrapper input:checked + .switch::before{
+    background-color: #a0a0a0;
+    left: 28px;
+}
+
+.bi-moon-fill {
+    color: whitesmoke;
+}
+
+.bi-sun-fill {
+    color: #f1c40f;
+}
+
+/**************** Estilização Seção Home Quiz ****************/
 
 .container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 100%;
     max-width: 1080px;
-    height: 100%;
+    height: 94vh;
+    height: 94dvh;
 }
 
-header .timer{
-    display: flex;
-    align-items: center;
-
-}
-
-section{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    margin-top: 6%;
-}
-
-.home{
+.home {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 95vh;
     height: 95dvh;
 }
 
@@ -147,202 +219,121 @@ section{
     color: white;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+/************** Estilizaçao Seção Questoes Quiz  **************/
 
-#questoes {
-    margin-top: 50px;
-    overflow: scroll;
-    overflow-x: hidden;
-    white-space: normal;
-    width: 100%;
-    height: 70vh;
+.quizPage{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 94vh;
+    height: 94dvh;
 }
 
-.questao{
-    margin: 16px 0;
+.formQuiz{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+    line-height: 30px;
+    border-radius: 16px;
+    width: 50%;
+    white-space: normal;
+    height: 60vh;
+    height: 60dvh;
+    margin-top: 40px;
+}
+
+.campoQuiz{
+    margin: 10px 2px 0px 0px;
     line-height: 30px;
     border-radius: 16px;
     max-width: 100%;
+    padding: 0px 0 4px 20px;
+    border: #0064ED solid 2px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #c0c0c023;
 }
 
-
-#timeStop {
-    margin-top: 50px;
-    font-size: 18px;
+.identificador{
+    background-color: #0064ED;
+    border-radius: 20px;
+    color:#fff;
+    font-size: 16px;
+    padding: 6px 10px 6px 10px;
+    box-shadow: 2px 2px 2px 2px #707070ab;
 }
 
-.timeStart{
-    font-size: 18px;
+.campoQuiz legend{
+    margin: 0px 10px 6px 0;
 }
 
-/*Estilização botao switch   */
-
-.switch-wrapper{
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    padding: 0;
-    margin: 0;
+.campoQuiz input{
+    
+    margin-left: 10px;
 }
-.switch-wrapper input{
-    opacity: 0;
-    width: 0;
-    height: 0;
+.campoQuiz label{
+    margin-left: 10px;
 }
+/* Scrollbar */
 
-.switch{
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    justify-content: space-around;
-    position: absolute;
-    margin-top: 5px;
-    top: 0;
-    left: 0;
-    background-color: black;
-    border-radius: 34px;
-}
-
-.switch::before{
-    display: flex;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    background-color: rgb(240, 230, 146);
-    height: 30px;
-    width: 30px;
-    content: "";
-    border-radius: 50%;
-    transition: 0.2s;
-}
-
-.switch-wrapper input:checked + .switch::before{
-    background-color: #a0a0a0;
-    left: 28px;
-}
-
-.bi-moon-fill {
-    color: whitesmoke;
-}
-
-.bi-sun-fill {
-    color: #f1c40f;
-}
-
-/*Estilização botão Audio*/
-
-#btn-audio {
-    margin-top: 10px;
-    width: 25px;
-    height: 20px;
-}
-
-/*Estilização da scroll bar das questoes*/
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 14px;
 }
 
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey; 
     border-radius: 10px;
+    
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(15, 15, 15); 
+    background: rgb(177, 177, 177); 
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #646363; 
+    background: #c0c0c0; 
 }
 
-/*Estilizaçao botões da página Quiz  */
+/* botoes */
 
 .btn-questao{
     display: flex;
     justify-content: space-between;
-}
-
-.timeStart{
     margin-top: 50px;
-    font-size: 18px;
+    width: 54%;
+}
+
+.btn-reiniciar, .btn-concluir, .btn-continuar{
+    background-color: #0064ED;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-#timeStop {
-    margin-top: 50px;
-    font-size: 18px;
-    cursor: pointer;
-}
 
-.timeStart:hover{
-    background-color: aqua;
-}
 
-/*Estilização modo dark*/
-
-/*Home Quiz */
-.dark .container-header{
-    background-color: var(--cordarkmode);
-    transition: 0.2s linear;
-
-}
-
-.dark .timer {
-    color: #fafafa;
-}
-
-.dark .card h1 {
-    color: #fafafa;
-}
-
-.dark .card p {
-    color: #fafafa;
-}
-
-.dark .formulario {
-    color: #fafafa;
-}
-
-.dark .timeStart {
-    color: #fafafa;
-}
-
-.dark #timeStop {
-    color: #fafafa;
-}
-
-.dark #btn-audio{
-    color: #fafafa;
-}
-
-.dark .formulario button:hover{
-    background-color: rgb(9, 9, 172);
-}
-
-/*Seção questões quiz*/
-
-.dark #quiz {
-    color: #fafafa;
-}
-
-.dark button {
-    background-color: rgb(13, 13, 39);
-}
-
-.dark #timeStop {
-    color: #fafafa;
-}
 /********** Estilização Page Result *****************/
 
 .result{
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-}
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 94dvh;
+    height: 94vh;
+}   
+
 
 .tabelaResultado{
     margin: 20px 0;
@@ -440,4 +431,60 @@ section{
         cursor: pointer;
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+/************** Estilização modo dark *******************/                                                                                                                                                   
+
+/*Home Quiz */
+.dark .container-header{
+    background-color: var(--cordarkmode);
+    transition: 0.2s linear;
+
+}
+
+.dark .timer {
+    color: #fafafa;
+}
+
+.dark .card h1 {
+    color: #fafafa;
+}
+
+.dark .card p {
+    color: #fafafa;
+}
+
+.dark .formulario {
+    color: #fafafa;
+}
+
+.dark .timeStart {
+    color: #fafafa;
+}
+
+.dark #timeStop {
+    color: #fafafa;
+}
+
+.dark #btn-audio{
+    color: #fafafa;
+}
+
+.dark .formulario button:hover{
+    background-color: rgb(9, 9, 172);
+}
+
+/*Seção questões quiz*/
+
+.dark #quiz {
+    color: #fafafa;
+}
+
+.dark button {
+    background-color: rgb(13, 13, 39);
+}
+
+.dark #timeStop {
+    color: #fafafa;
 }

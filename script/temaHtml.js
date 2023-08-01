@@ -1,6 +1,6 @@
 export const questoesHtml = [
     {
-        identificador: "q1",
+        identificador: "Questão 1",
         pergunta: "Qual tag HTML é usada para criar uma lista não ordenada?",
         alternativaA: "a) &lt;ul&gt;",
         alternativaB: "b) &lt;ol&gt;",
@@ -9,7 +9,7 @@ export const questoesHtml = [
         correta: "alternativaA"
     },
     {
-        identificador: "q2",
+        identificador: "Questão 2",
         pergunta: "Qual atributo HTML é usado para definir o texto alternativo de uma imagem?",
         alternativaA: "a) src",
         alternativaB: "b) alt",
@@ -18,7 +18,7 @@ export const questoesHtml = [
         correta: "alternativaB"
     },
     {
-        identificador: "q3",
+        identificador: "Questão 3",
         pergunta: "Qual elemento HTML é utilizado para criar um hiperlink?",
         alternativaA: "a) &lt;url&gt;",
         alternativaB: "b) &lt;link&gt;",
@@ -27,7 +27,7 @@ export const questoesHtml = [
         correta: "alternativaC"
     },
     {
-        identificador: "q4",
+        identificador: "Questão 4",
         pergunta: "Em HTML, qual tag é usada para criar uma tabela?",
         alternativaA: "a) &lt;table&gt;",
         alternativaB: "b) &lt;tab&gt;",
@@ -36,7 +36,7 @@ export const questoesHtml = [
         correta: "alternativaA"
     },
     {
-        identificador: "q5",
+        identificador: "Questão 5",
         pergunta: "Qual atributo HTML é usado para definir o título de uma página?",
         alternativaA: "a) &lt;header&gt;",
         alternativaB: "b) &lt;title&gt;",
@@ -45,7 +45,7 @@ export const questoesHtml = [
         correta: "alternativaB"
     },
     {
-        identificador: "q6",
+        identificador: "Questão 6",
         pergunta: "Qual tag HTML é usada para criar um parágrafo?",
         alternativaA: "a) &lt;p&gt;",
         alternativaB: "b) &lt;paragraph&gt;",
@@ -54,7 +54,7 @@ export const questoesHtml = [
         correta: "alternativaA"
     },
     {
-        identificador: "q7",
+        identificador: "Questão 7",
         pergunta: "Qual tag HTML é usada para definir estilos?",
         alternativaA: "a) &lt;css&gt;",
         alternativaB: "b) style",
@@ -63,7 +63,7 @@ export const questoesHtml = [
         correta: "alternativaC"
     },
     {
-        identificador: "q8",
+        identificador: "Questão 8",
         pergunta: "Em HTML, qual tag é usada para criar um campo de entrada de texto?",
         alternativaA: "a) &lt;input&gt;",
         alternativaB: "b) &lt;text&gt;",
@@ -72,7 +72,7 @@ export const questoesHtml = [
         correta: "alternativaA"
     },
     {
-        identificador: "q9",
+        identificador: "Questão 9",
         pergunta: "Qual atributo HTML é usado para aplicar estilo a um elemento?",
         alternativaA: "a) class",
         alternativaB: "b) style",
@@ -81,7 +81,7 @@ export const questoesHtml = [
         correta: "alternativaB"
     },
     {
-        identificador: "q10",
+        identificador: "Questão 10",
         pergunta: "Em HTML, qual tag é usada para criar uma linha horizontal?",
         alternativaA: "a) &lt;line&gt;",
         alternativaB: "b) &lt;hr&gt;",
