@@ -222,7 +222,7 @@ btnContinuarQuiz.addEventListener("click", () => {
     mostrarTela(resultado);
     insertTableResults();
     ocultarBtnContinue(true);
-    insightAcertos();
+    insightsAcertos();
     insightsErros();
     ranking();
 });
@@ -249,28 +249,106 @@ function insertTableResults() {
 }
 
 //Função para mostrar os insights (média por acertos)
-function insightAcertos() {
-    let todasPontuacoes = 0;
+function insightsAcertos() {
+    let pontuacoesHTML = 0, contHTML = 0;
+    let pontuacoesCSS = 0, contCSS = 0;
+    let pontuacoesJS = 0, contJS = 0;
+
+    let tagMediaHTML = document.getElementById("media-acertos-html");
+    let tagMediaCSS = document.getElementById("media-acertos-css");
+    let tagMediaJS = document.getElementById("media-acertos-js");
+
     for(let i = 0; i < informacoesUser.length; i++) {
-        todasPontuacoes += informacoesUser[i].pontuacao;
+        if(informacoesUser[i].tema == "HTML") {
+            pontuacoesHTML += informacoesUser[i].pontuacao;
+            contHTML++;
+        }
+        else if(informacoesUser[i].tema == "CSS") {
+            pontuacoesCSS += informacoesUser[i].pontuacao;
+            contCSS++;
+        }
+        else if(informacoesUser[i].tema == "JavaScript") {
+            pontuacoesJS += informacoesUser[i].pontuacao;
+            contJS++;
+        }
     }
 
-    let mediaPontuacoes = todasPontuacoes / informacoesUser.length;
-    mediaPontuacoes /= 10;
-    let mediaLtda = mediaPontuacoes.toFixed(4);
-    let mediaPercent = Number(mediaLtda) * 100;
+    let percentHTML = 0;
+    let percentCSS = 0;
+    let percentJS = 0;
 
-    let tagMediaAcertos = document.getElementById("media-acertos");
-    tagMediaAcertos.innerHTML = `${mediaPercent}%`;
+    //tag média HTML
+    if(pontuacoesHTML > 0) {
+        let mediaHTML = pontuacoesHTML / contHTML;
+        mediaHTML /= 10;
+        let ltdaHTML = mediaHTML.toFixed(4);
+        percentHTML = Number(ltdaHTML) * 100;
+        tagMediaHTML.innerHTML = `${percentHTML}%`;
+    }
+    else {
+        tagMediaHTML.innerHTML = ``;
+    }
+
+    //tag média CSS
+    if(pontuacoesCSS > 0) {
+        let mediaCSS = pontuacoesCSS / contCSS;
+        mediaCSS /= 10;
+        let ltdaCSS = mediaCSS.toFixed(4);
+        percentCSS = Number(ltdaCSS) * 100;
+        tagMediaCSS.innerHTML = `${percentCSS}%`;
+    }
+    else {
+        tagMediaCSS.innerHTML = ``;
+    }    
+
+    //tag média JS
+    if(pontuacoesJS > 0) {
+        let mediaJS = pontuacoesJS / contJS;
+        mediaJS /= 10;
+        let ltdaJS = mediaJS.toFixed(4);
+        percentJS = Number(ltdaJS) * 100;
+        tagMediaJS.innerHTML = `${percentJS}%`;
+    }
+    else {
+        tagMediaJS.innerHTML = ``;
+    } 
     
-    return mediaPercent;
+    return {
+        html: percentHTML,
+        css: percentCSS,
+        js: percentJS
+    }
 }
 
 function insightsErros() {
-    let mediaErros = 100 - insightAcertos();
+    let acertos = insightsAcertos();
+    let tagErrosHTML = document.getElementById("media-erros-html");
+    let tagErrosCSS = document.getElementById("media-erros-css");
+    let tagErrosJS = document.getElementById("media-erros-js");
 
-    let tagMediaErros = document.getElementById("media-erros");
-    tagMediaErros.innerHTML = `${mediaErros}%`;
+    if(acertos.html > 0) {
+        let mediaErrosHTML = 100 - acertos.html;
+        tagErrosHTML.innerHTML = `${mediaErrosHTML}%`;
+    }
+    else {
+        tagErrosHTML.innerHTML = ``;
+    }
+    
+    if(acertos.css > 0) {
+        let mediaErrosCSS = 100 - acertos.css;
+        tagErrosCSS.innerHTML = `${mediaErrosCSS}%`;
+    }    
+    else {
+        tagErrosCSS.innerHTML = ``;
+    }
+
+    if(acertos.js > 0) {
+        let mediaErrosJS = 100 - acertos.js;
+        tagErrosJS.innerHTML = `${mediaErrosJS}%`;
+    }
+    else {
+        tagErrosJS.innerHTML = ``;
+    }    
 }
 
 //Função para o Ranking (por tema)
