@@ -36,8 +36,6 @@ function atualizaCronometro() {
 }
 
 export function iniciarCronometro() {
-    console.log("Iniciando o cronômetro...");
-
     cronometro = 0;
     cronometroHTML.innerHTML = "00:00:00";
 
@@ -46,8 +44,6 @@ export function iniciarCronometro() {
 }
 
 export function pararCronometro() {
-    console.log("Parando o cronômetro...");
-
     // Parando o cronômetro
     clearInterval(idCronometro);
 
