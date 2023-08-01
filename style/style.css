@@ -304,7 +304,7 @@ nav{
     display: flex;
     justify-content: space-between;
     margin-top: 50px;
-    width: 60%;
+    width: 54%;
 }
 
 .btn-reiniciar, .btn-concluir, .btn-continuar{
