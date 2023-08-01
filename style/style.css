@@ -69,16 +69,12 @@ nav{
     align-items: center;
 }
 
-.box-audio{
-    display: flex;
-    align-items: center;
-}
-
 .btn-mutePlay{
     border-radius: 40%;
     padding: 6px;
     border: none;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .btn-mutePlay:hover{
@@ -467,7 +463,7 @@ nav{
     color: #fafafa;
 }
 
-.dark #btn-audio{
+.dark .btn-mutePlay{
     color: #fafafa;
 }
 

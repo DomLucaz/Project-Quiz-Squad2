@@ -410,12 +410,10 @@ let stopped = true;
 // stopped inicia como verdade então o primeiro clique vai entrar no if, dentro do if o valor de stopped vai mudar e no segundo clique ele vai entrar no else, e assim sucessivamente.
 btnAudio.onclick = () => {
     if(stopped) {
-        console.log("teste if", stopped)
         comVolume();
         stopped = false;
     }
     else {
-        console.log("teste else", stopped)
         semVolume();
         stopped = true;
     }
