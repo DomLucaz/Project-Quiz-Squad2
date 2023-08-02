@@ -316,7 +316,24 @@ nav{
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+/* ======== Btoão da musica ========= */
+.audio-btn svg { /*tamanho do icone*/
+    width: 30px;
+    height: 30px;
+}
 
+.audio-btn {
+    border-radius: 100%;
+    padding: 6px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.audio-btn:hover{
+    background-color: rgba(199, 198, 198, 0.288);
+    transition: 0.5s;
+}
 
 
 /********** Estilização Page Result *****************/

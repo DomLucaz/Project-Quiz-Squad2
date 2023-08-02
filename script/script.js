@@ -3,7 +3,7 @@ import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
 import {pararCronometro, iniciarCronometro} from "./cronometro.js";
-import { comVolume, semVolume, btnAudio, audioSvg } from "./trilhaSonora.js";
+import { pauseAudio, playAudio, btnAudio, audioSvg } from "./trilhaSonora.js";
 
 
 //========= Declarações =============================
@@ -410,11 +410,11 @@ let stopped = true;
 // stopped inicia como verdade então o primeiro clique vai entrar no if, dentro do if o valor de stopped vai mudar e no segundo clique ele vai entrar no else, e assim sucessivamente.
 btnAudio.onclick = () => {
     if(stopped) {
-        comVolume();
+        playAudio();
         stopped = false;
     }
     else {
-        semVolume();
+        pauseAudio();
         stopped = true;
     }
     // troca o ícone toda vez que clicamos no botão seguindo as funções comVolume/semVolume
