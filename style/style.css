@@ -302,6 +302,7 @@ nav{
 
 .btn-questao{
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     margin-top: 50px;
     width: 54%;

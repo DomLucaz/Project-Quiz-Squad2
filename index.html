@@ -52,7 +52,7 @@
                     <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
                     <form class="formulario">
                         <label for="nome">Nome</label>
-                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="">
+                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="10">
                         <label>Tema</label>
                         <select id="tema">
                             <option disabled selected>-- Selecione um Tema --</option>
@@ -70,7 +70,7 @@
         <!-- Inicio seçao questões quiz -->
         <div id="quiz" hidden>
             <section class="quizPage">
-                <h1>Quiz - <span id="quizTema"></span></h1>
+                <h2><span id="quizTema"></span></h2>
                 <form id="questoes" class="formQuiz">
                 </form>
                 <div class="btn-questao">
@@ -83,7 +83,7 @@
         <!-- Fim seçao questões quiz -->
 
         <!--Inicio seção resultado -->
-        <div id="result">
+        <div id="result" hidden>
             <section class="result">
                 <h1>Resultado</h1>
 
@@ -157,7 +157,7 @@
         <!--Fim seção resultado -->
     </main>
 
-    <!-- <script type="module" src="script/script.js"></script> -->
+    <script type="module" src="script/script.js"></script>
 
 </body>
 
