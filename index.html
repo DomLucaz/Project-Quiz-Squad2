@@ -31,13 +31,15 @@
                 <span id="cronometro"></span>
             </div>
             <!-- Trilha sonora -->
-            <button id="btn-audio" class="btn-mutePlay">
-                <audio id="audio" preload="auto" autoplay loop>
+            <div class="box-audio">
+                <audio id="audio" preload="auto" lautoplay loop>
                     <source src="som/trilhaSonora.mp3" type="audio/mp3">
                     Seu navegador não possui o elemento audio
                 </audio>
-                <img src="assets/volume-up-fill.svg" width="22">
-            </button>
+                <button id="btn-audio" class="btn-mutePlay">
+                    <img src="assets/volume-mute.svg" width="22">
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -134,80 +136,18 @@
 
 
                 <div class="rank">
-                    <table class="ranking">
-                        <thead>
-                            <tr>
-                                <th id="tema-html">HTML</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="ranking">
-                        <thead>
-                            <tr>
-                                <th id="tema-css">CSS</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <table class="ranking">
-                        <thead>
-                            <tr>
-                                <th id="tema-js">JavaScript</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div id="rank-html">
+                        <h2>Ranking - HTML</h2>
+                        <ol id="tema-html"></ol>
+                    </div>
+                    <div id="rank-css">
+                        <h2>Ranking - CSS</h2>
+                        <ol id="tema-css"></ol>
+                    </div>
+                    <div id="rank-js">
+                        <h2>Ranking - JS</h2>
+                        <ol id="tema-js"></ol>
+                    </div>
                 </div>
 
                 <button type="button" id="inicio">Reniciar</button>
