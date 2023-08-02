@@ -373,9 +373,10 @@ function ranking() {
     }
 
     // Função para gerar o HTML da lista a partir de um objeto de pontuações
-    function generateListHTML(arrayPontos) {
+    function gerarListasHTML(arrayPontos) {
+        let top5 = arrayPontos.slice(0, 5);
         let html = '';
-        for(let [nome, pontos] of arrayPontos) {
+        for(let [nome, pontos] of top5) {
             html += `<li>${nome} - ${pontos}/10</li>\n`;
         }
         return html;
@@ -395,9 +396,9 @@ function ranking() {
     arrayPontuacaoJS.sort(sortfunction); 
 
     // Atualiza o HTML das listas
-    listaHTML.innerHTML = generateListHTML(arrayPontuacaoHTML);
-    listaCSS.innerHTML = generateListHTML(arrayPontuacaoCSS);
-    listaJS.innerHTML = generateListHTML(arrayPontuacaoJS);
+    listaHTML.innerHTML = gerarListasHTML(arrayPontuacaoHTML);
+    listaCSS.innerHTML = gerarListasHTML(arrayPontuacaoCSS);
+    listaJS.innerHTML = gerarListasHTML(arrayPontuacaoJS);
 }
 
 //========= Main =============================
