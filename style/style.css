@@ -367,24 +367,33 @@ nav{
     
 }
 .acertos{
-    background-color: #0ff153;
-    padding: 10px 18px;
-    border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    border: 2px solid #55e055;
+    background-color: #55e0553f;
+    padding: 8px 8px;
+    border-radius: 10px;
     font-weight: 500;
 }
 
+
 .erros{
-    background-color: red;
-    padding: 10px 18px;
-    border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    color: white;
+    padding: 8px 8px;
+    border-radius: 10px;
+    color: black;
     font-weight: 400;
+    border: 2px solid red;
+    background-color: rgba(255, 0, 0, 0.26);
+    color: rgb(107, 107, 107);
+}
+
+.erros span, .acertos span{
+    font-weight: 600;
+    margin-left: 4px;
 }
 
 .rank{
