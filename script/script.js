@@ -5,6 +5,7 @@ import { pararCronometro, iniciarCronometro        } from "./acessorios/cronomet
 import { pauseAudio, playAudio, btnAudio, audioSvg } from "./acessorios/trilhaSonora.js";
 import { quizResults                               } from "./populate.JS";
 
+
 const home      = [false, true, true];
 const quiz      = [true, false, true];
 const resultado = [true, true, false];
@@ -14,6 +15,7 @@ const btnReiniciarQuiz   = document.getElementById("reiniciar");
 const btnConcluirQuiz    = document.getElementById("concluir");
 const btnContinuarQuiz   = document.getElementById("continuar");
 const btnReiniciarResult = document.getElementById("inicio");
+const btnDarkMode = document.getElementById("chk");
 
 const idHome     = document.getElementById("home"); 
 const idQuiz     = document.getElementById("quiz");
@@ -23,23 +25,12 @@ const idTemaForm = document.getElementById("tema");
 
 const areasQuestoes = document.getElementById("questoes");
 
+const darkModeTheme = JSON.parse(localStorage.getItem("darkMode"));
+
 let informacoesUser = [];
 
 
-// Dark mode e LocalStorage: Não sei como separar esta parte
-const btnDarkMode = document.getElementById("chk");
-const darkModeTheme = JSON.parse(localStorage.getItem("darkMode"));
 
-if (darkModeTheme) {
-    document.body.classList.add("dark");
-    btnDarkMode.cheked = true;
-}
-
-btnDarkMode.addEventListener("change", () => {
-    document.body.classList.toggle("dark");
-    const darkModeTheme = document.body.classList.contains("dark");
-    localStorage.setItem("darkMode", JSON.stringify(darkModeTheme));
-});
 // ========================
 
 function mostrarTela(arrTela) {
@@ -440,9 +431,18 @@ btnAudio.onclick = () => {
     btnAudio.innerHTML = audioSvg;  
 }
 
+btnDarkMode.addEventListener("change", () => {
+    document.body.classList.toggle("dark");
+    const darkModeTheme = document.body.classList.contains("dark");
+    localStorage.setItem("darkMode", JSON.stringify(darkModeTheme));
+});
+
 mostrarTela(home);
 popularTabela();
 populateRanking(quizResults);
 
 
-
+if (darkModeTheme) {
+    document.body.classList.add("dark");
+    btnDarkMode.cheked = true;
+}
