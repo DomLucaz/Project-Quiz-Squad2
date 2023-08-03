@@ -31,12 +31,21 @@ const informacoesUser = [];
 
 const areasQuestoes = document.getElementById("questoes");
 
-// Dark mode 
+// Dark mode e LocalStorage
 const chk = document.getElementById("chk");
+const darkModeTheme = JSON.parse(localStorage.getItem("darkMode"));
+
+if (darkModeTheme) {
+    document.body.classList.add("dark");
+    chk.cheked = true;
+}
 
 chk.addEventListener("change", () => {
-document.body.classList.toggle("dark") // Toggle -> mostra ou oculta um elemento de menu em um site
+document.body.classList.toggle("dark") 
+const darkModeTheme = document.body.classList.contains("dark");
+localStorage.setItem("darkMode", JSON.stringify(darkModeTheme));
 });
+
 
 // Hidden
 function mostrarTela(arr) {
