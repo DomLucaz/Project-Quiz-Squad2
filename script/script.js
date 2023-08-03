@@ -179,35 +179,39 @@ function validarHome() {
 //Validação das questões
 //Validação das questões
 function validarRespostas() {
-    const questoes = pegarTema();
-    let pontuacao = 0;
+    let questoes = pegarTema();
+    let pontuacao = 0; 
 
-    // Verifique se todas as perguntas foram respondidas
-    for (let i = 0; i < questoes.length; i++) {
-        const questao = questoes[i];
-        const selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`);
-
-        if (!selecionada) {
+    // Primeiro, verifique se todas as perguntas foram respondidas
+    for(let questao of questoes) {
+        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
+        if (!selecionada) { 
             alert("Por favor, responda todas as questões antes de continuar.");
-            return;
-        }
-
-        const resposta = selecionada.value;
-
-        if (resposta === questao.correta) {
-            pontuacao += 1;
-            document.getElementById(`f${i + 1}`).style.background = 'rgba(0, 255, 42, 0.2)';
-        } else {
-            document.getElementById(`f${i + 1}`).style.background = 'rgba(255, 0, 0, 0.2)';
+            return; 
         }
     }
 
+    // Se todas as perguntas foram respondidas, faça a validação e pintura
+    let i = 0;
+    for(let questao of questoes) { 
+        let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
+        let resposta = selecionada.value; 
+
+        if(resposta === questao.correta) {
+            pontuacao += 1; 
+            document.getElementById(`f${i+1}`).style.background = 'rgba(0, 255, 42, 0.2)';
+        }
+        else {
+            document.getElementById(`f${i+1}`).style.background = 'rgba(255, 0, 0, 0.2)';
+        }
+        i++;
+    }
     pararCronometro();
     hiddenButtons(true);
     ocultarBtnContinue(false);
 
-    informacoesUser[informacoesUser.length - 1].pontuacao = pontuacao;
-    return pontuacao;
+    informacoesUser[informacoesUser.length-1].pontuacao = pontuacao; 
+    return pontuacao; 
 }
 //lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
 
@@ -319,7 +323,7 @@ function insightsAcertos() {
         let mediaHTML = pontuacoesHTML / contHTML;
         mediaHTML /= 10;
         let ltdaHTML = mediaHTML.toFixed(2);
-        percentHTML = Number(ltdaHTML) * 100;
+        percentHTML = Math.round(Number(ltdaHTML) * 100);
         tagMediaHTML.innerHTML = `${percentHTML}%`;
     }
     else {
@@ -331,7 +335,7 @@ function insightsAcertos() {
         let mediaCSS = pontuacoesCSS / contCSS;
         mediaCSS /= 10;
         let ltdaCSS = mediaCSS.toFixed(2);
-        percentCSS = Number(ltdaCSS) * 100;
+        percentCSS = Math.round(Number(ltdaCSS) * 100);
         tagMediaCSS.innerHTML = `${percentCSS}%`;
     }
     else {
@@ -343,7 +347,7 @@ function insightsAcertos() {
         let mediaJS = pontuacoesJS / contJS;
         mediaJS /= 10;
         let ltdaJS = mediaJS.toFixed(2);
-        percentJS = Number(ltdaJS) * 100;
+        percentJS = Math.round(Number(ltdaJS) * 100);
         tagMediaJS.innerHTML = `${percentJS}%`;
     }
     else {
