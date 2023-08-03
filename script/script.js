@@ -416,9 +416,9 @@ btnReiniciarResult.addEventListener ("click", () => {
     esvaziarCamposHome();
 });
 
-btnAudio.onclick = () => {
-    let stopped = true;
+let stopped = true;
 
+btnAudio.onclick = () => {
     if(stopped) {
         playAudio();
         stopped = false;
