@@ -1,62 +1,56 @@
-// ======== Import      =============================
-import { questoesHtml } from "./temaHtml.js";
-import { questoesCSS } from "./temaCSS.js";
-import { questoesJS } from "./temaJS.js";
-import { pararCronometro, iniciarCronometro } from "./cronometro.js";
-import { pauseAudio, playAudio, btnAudio, audioSvg } from "./trilhaSonora.js";
-import { quizResults } from "./populate.JS";
+import { questoesHtml                              } from "./questoes/temaHtml.js";
+import { questoesCSS                               } from "./questoes/temaCSS.js";
+import { questoesJS                                } from "./questoes/temaJS.js";
+import { pararCronometro, iniciarCronometro        } from "./acessorios/cronometro.js";
+import { pauseAudio, playAudio, btnAudio, audioSvg } from "./acessorios/trilhaSonora.js";
+import { quizResults                               } from "./populate.JS";
 
-//========= Declarações =============================
-
-// Constantes e Variáveis
-const home = [false, true, true];
-const quiz = [true, false, true];
+const home      = [false, true, true];
+const quiz      = [true, false, true];
 const resultado = [true, true, false];
 
-// Coletando os botões
-const btnIniciar = document.getElementById("btnIniciar"); //id chamado de btn é redundante
-const btnReiniciarQuiz = document.getElementById("reiniciar");
-const btnConcluirQuiz = document.getElementById("concluir");
-const btnContinuarQuiz = document.getElementById("continuar");
+const btnIniciar         = document.getElementById("btnIniciar"); 
+const btnReiniciarQuiz   = document.getElementById("reiniciar");
+const btnConcluirQuiz    = document.getElementById("concluir");
+const btnContinuarQuiz   = document.getElementById("continuar");
 const btnReiniciarResult = document.getElementById("inicio");
 
-const idHome = document.getElementById("home"); //nome da constante com "id" é reduntane
-const idQuiz = document.getElementById("quiz");
-const idResult= document.getElementById("result");
+const idHome     = document.getElementById("home"); 
+const idQuiz     = document.getElementById("quiz");
+const idResult   = document.getElementById("result");
 const idNomeForm = document.getElementById("nome");
 const idTemaForm = document.getElementById("tema");
 
-//vetor para os dados dos usuários
-const informacoesUser = [];
-
 const areasQuestoes = document.getElementById("questoes");
 
-// Dark mode e LocalStorage
-const chk = document.getElementById("chk");
+let informacoesUser = [];
+
+
+// Dark mode e LocalStorage: Não sei como separar esta parte
+const btnDarkMode = document.getElementById("chk");
 const darkModeTheme = JSON.parse(localStorage.getItem("darkMode"));
 
 if (darkModeTheme) {
     document.body.classList.add("dark");
-    chk.cheked = true;
+    btnDarkMode.cheked = true;
 }
 
-chk.addEventListener("change", () => {
-document.body.classList.toggle("dark") 
-const darkModeTheme = document.body.classList.contains("dark");
-localStorage.setItem("darkMode", JSON.stringify(darkModeTheme));
+btnDarkMode.addEventListener("change", () => {
+    document.body.classList.toggle("dark");
+    const darkModeTheme = document.body.classList.contains("dark");
+    localStorage.setItem("darkMode", JSON.stringify(darkModeTheme));
 });
+// ========================
 
-
-// Hidden
-function mostrarTela(arr) {
-    idHome.hidden = arr[0];
-    idQuiz.hidden = arr[1];
-    idResult.hidden = arr[2];
+function mostrarTela(arrTela) {
+    idHome.hidden   = arrTela[0];
+    idQuiz.hidden   = arrTela[1];
+    idResult.hidden = arrTela[2];
 }
 
 function hiddenButtons(boolean) {
     if(!(idQuiz.hidden)) {
-        btnConcluirQuiz.hidden = boolean;
+        btnConcluirQuiz.hidden  = boolean;
         btnReiniciarQuiz.hidden = boolean;
     }
 }
@@ -65,50 +59,54 @@ function ocultarBtnContinue(boolean) {
     btnContinuarQuiz.hidden = boolean;
 }
 
-// Coletar dados form home
 function coletarForm() {
-    const nome = idNomeForm.value;
-    const tema = idTemaForm.value;
-    const data = new Date().toLocaleDateString();
-    const hora = new Date().toLocaleTimeString();
-
     const idCronometro = document.getElementById("cronometro");
 
-    const dadosForm = {
+    let nome  = idNomeForm.value;
+    let tema  = idTemaForm.value;
+    let tempo = idCronometro.innerText;
+    let data  = new Date().toLocaleDateString();
+    let hora  = new Date().toLocaleTimeString();
+
+    let dadosForm = {
         nome: nome,
         tema: tema,
         data: data,
         hora: hora,
         pontuacao: null,
-        tempo: idCronometro.innerText,
+        tempo: tempo,
     };
 
     informacoesUser.push(dadosForm);
 }
 
-
-// Pegar Tema
 function pegarTema() {
-    let numElementoUser = informacoesUser.length-1; // Não dá para tirar esta linha
-    let valorTema = informacoesUser[numElementoUser].tema;
+    let numElementoUser  = informacoesUser.length-1; 
+    let valorTema        = informacoesUser[numElementoUser].tema;
     let nomeQuestõesTema = "none";
 
-    if (valorTema == "HTML") {
-        nomeQuestõesTema = questoesHtml;
-
-    } else if (valorTema == "CSS") {
-        nomeQuestõesTema = questoesCSS;
-
-    } else if (valorTema == "JavaScript") {
-        nomeQuestõesTema = questoesJS;
+    switch (valorTema) {
+        case "HTML":
+            nomeQuestõesTema = questoesHtml;
+            break;
+        
+        case "CSS":
+            nomeQuestõesTema = questoesCSS;
+            break;
+        
+        case "JavaScript":
+            nomeQuestõesTema = questoesJS;
+            break;
+        
+        default:
+            break;
     }
 
     return nomeQuestõesTema;
 }
 
-// Criar questões
 function criarQuestoes() {
-    let questoes = pegarTema();
+    const questoes = pegarTema();
     
     let i = 1;
     for(let questao of questoes) {
@@ -126,48 +124,30 @@ function criarQuestoes() {
     }
 }
 
-// Destruir questões
 function destruirQuestoes() {
     areasQuestoes.innerHTML = '';
 }
 
-// Retirar apagar informações do usuário pq ele reiniciou
 function deletarInformacao () {
     informacoesUser.pop();
 }
 
-// Mudar título do QUIZ
 function mudarTitulo () {
     const tituloQuiz = document.getElementById("quizTema");
-    tituloQuiz.innerHTML = informacoesUser[informacoesUser.length-1].tema;
+    let ultimoElemento = informacoesUser.length-1;
+
+    tituloQuiz.innerHTML = informacoesUser[ultimoElemento].tema;
 }
 
-// Botão Iniciar
-btnIniciar.addEventListener("click", () => {
-    // CUIDADO A ORDEM PODE QUEBRAR O CÓDIGO
-    coletarForm();
-    validarHome();
-    hiddenButtons(false);
-
-});
-
-// Botão Reiniciar QUIZ
-btnReiniciarQuiz.addEventListener("click", ()=> {
-    mostrarTela(home);
-    deletarInformacao();
-    destruirQuestoes();
-    pararCronometro();
-});
-
-// validarHome tem função de required.
 function validarHome() {
     let numUser = informacoesUser.length-1;
-    let tema = informacoesUser[numUser].tema;
-    let nome = informacoesUser[numUser].nome;
+    let tema    = informacoesUser[numUser].tema;
+    let nome    = informacoesUser[numUser].nome;
 
     if ( tema == "-- Selecione um Tema --" || nome == '') {
         alert('Selecione um tema ou Coloque o nome');
         deletarInformacao();
+
     } else {
         criarQuestoes();
         mostrarTela(quiz);
@@ -176,13 +156,10 @@ function validarHome() {
     }
 }
 
-//Validação das questões
-//Validação das questões
 function validarRespostas() {
     let questoes = pegarTema();
     let pontuacao = 0; 
 
-    // Primeiro, verifique se todas as perguntas foram respondidas
     for(let questao of questoes) {
         let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
         if (!selecionada) { 
@@ -191,7 +168,6 @@ function validarRespostas() {
         }
     }
 
-    // Se todas as perguntas foram respondidas, faça a validação e pintura
     let i = 0;
     for(let questao of questoes) { 
         let selecionada = document.querySelector(`input[name="${questao.identificador}"]:checked`); 
@@ -213,46 +189,19 @@ function validarRespostas() {
     informacoesUser[informacoesUser.length-1].pontuacao = pontuacao; 
     return pontuacao; 
 }
-//lembrar de utilizar o retorno da função validarRespostas para desenvolver o resultado
-
-// Zerar form home
-const campoNome = document.getElementById("nome");
-const campoTema = document.getElementById("tema");
 
 function esvaziarCamposHome() {
+    const campoNome = document.getElementById("nome");
+    const campoTema = document.getElementById("tema");
+
     campoNome.value = '';
     campoTema[0].selected = true;
 }
 
-
-// Botão concluir QUIZ
-btnConcluirQuiz.addEventListener("click", ()=> {
-    validarRespostas();
-});
-
-// Botão continuar QUIZ
-btnContinuarQuiz.addEventListener("click", () => {
-    mostrarTela(resultado);
-    insertTableResults();
-    ocultarBtnContinue(true);
-    insightsAcertos();
-    insightsErros();
-    ranking();
-    limitarTabelaResultato()
-});
-
-//Botão para voltar a página inicial 
-btnReiniciarResult.addEventListener ("click", () => {
-    mostrarTela(home);
-    destruirQuestoes();
-    esvaziarCamposHome();
-    console.log(informacoesUser);
-});
-
 function insertTableResults() {
     const tabelaResultado = document.querySelector(".tabelaResultado tbody");
-    const dadosUsuario = informacoesUser[informacoesUser.length-1];
-    const newRow = tabelaResultado.insertRow(0);
+    const dadosUsuario    = informacoesUser[informacoesUser.length-1];
+    const newRow          = tabelaResultado.insertRow(0);
 
     newRow.innerHTML = `
         <td>${dadosUsuario.nome}</td>
@@ -282,6 +231,7 @@ function popularTabela() {
 
 function limitarTabelaResultato() {
     const arrLinhas = document.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    
     if (arrLinhas.length > 5) {
         for (let index = arrLinhas.length; index != 5; index--) {
             arrLinhas[arrLinhas.length-1].remove();
@@ -289,15 +239,14 @@ function limitarTabelaResultato() {
     }
 }
 
-//Função para mostrar os insights (média por acertos)
 function insightsAcertos() {
     let pontuacoesHTML = 0, contHTML = 0;
-    let pontuacoesCSS = 0, contCSS = 0;
-    let pontuacoesJS = 0, contJS = 0;
+    let pontuacoesCSS  = 0, contCSS  = 0;
+    let pontuacoesJS   = 0, contJS   = 0;
 
     let tagMediaHTML = document.getElementById("media-acertos-html");
-    let tagMediaCSS = document.getElementById("media-acertos-css");
-    let tagMediaJS = document.getElementById("media-acertos-js");
+    let tagMediaCSS  = document.getElementById("media-acertos-css");
+    let tagMediaJS   = document.getElementById("media-acertos-js");
 
     for(let i = 0; i < informacoesUser.length; i++) {
         if(informacoesUser[i].tema == "HTML") {
@@ -362,10 +311,10 @@ function insightsAcertos() {
 }
 
 function insightsErros() {
-    let acertos = insightsAcertos();
+    let acertos      = insightsAcertos();
     let tagErrosHTML = document.getElementById("media-erros-html");
-    let tagErrosCSS = document.getElementById("media-erros-css");
-    let tagErrosJS = document.getElementById("media-erros-js");
+    let tagErrosCSS  = document.getElementById("media-erros-css");
+    let tagErrosJS   = document.getElementById("media-erros-js");
 
     if(acertos.html > 0) {
         let mediaErrosHTML = 100 - acertos.html;
@@ -392,18 +341,16 @@ function insightsErros() {
     }    
 }
 
-//Função para o Ranking (por tema)
 function ranking() {
     let listaHTML = document.getElementById("tema-html");
     let listaCSS = document.getElementById("tema-css");
     let listaJS = document.getElementById("tema-js");
 
-    // Inicializa objetos para armazenar a pontuação mais recente para cada usuário
     let pontuacaoHTML = {};
     let pontuacaoCSS = {};
     let pontuacaoJS = {};
 
-    for(let i = 0; i < informacoesUser.length; i++) {// aqui dá para usar swittich??
+    for(let i = 0; i < informacoesUser.length; i++) {
         if(informacoesUser[i].tema == 'HTML') {
             pontuacaoHTML[informacoesUser[i].nome] = informacoesUser[i].pontuacao;
         } else if(informacoesUser[i].tema == 'CSS') {
@@ -413,7 +360,6 @@ function ranking() {
         }
     }
 
-    // Função para gerar o HTML da lista a partir de um objeto de pontuações
     function gerarListasHTML(arrayPontos) {
         let top5 = arrayPontos.slice(0, 5);
         let html = '';
@@ -423,7 +369,6 @@ function ranking() {
         return html;
     }
 
-    //transformando os objetos em vetores
     let arrayPontuacaoHTML = Object.entries(pontuacaoHTML);
     let arrayPontuacaoCSS = Object.entries(pontuacaoCSS);
     let arrayPontuacaoJS = Object.entries(pontuacaoJS);
@@ -436,7 +381,6 @@ function ranking() {
     arrayPontuacaoCSS.sort(sortfunction); 
     arrayPontuacaoJS.sort(sortfunction); 
 
-    // Atualiza o HTML das listas
     listaHTML.innerHTML = gerarListasHTML(arrayPontuacaoHTML);
     listaCSS.innerHTML = gerarListasHTML(arrayPontuacaoCSS);
     listaJS.innerHTML = gerarListasHTML(arrayPontuacaoJS);
@@ -448,18 +392,42 @@ function populateRanking(rankPopulate) {
     }
 }
 
+btnIniciar.addEventListener("click", () => {
+    coletarForm();
+    validarHome();
+    hiddenButtons(false);
+});
 
-//========= Main =============================
+btnReiniciarQuiz.addEventListener("click", ()=> {
+    mostrarTela(home);
+    deletarInformacao();
+    destruirQuestoes();
+    pararCronometro();
+});
 
-mostrarTela(home);
-popularTabela();
-populateRanking(quizResults);
+btnConcluirQuiz.addEventListener("click", ()=> {
+    validarRespostas();
+});
 
-//========= Trilha Sonora =====================
-let stopped = true;
+btnContinuarQuiz.addEventListener("click", () => {
+    mostrarTela(resultado);
+    insertTableResults();
+    ocultarBtnContinue(true);
+    insightsAcertos();
+    insightsErros();
+    ranking();
+    limitarTabelaResultato();
+});
 
-// stopped inicia como verdade então o primeiro clique vai entrar no if, dentro do if o valor de stopped vai mudar e no segundo clique ele vai entrar no else, e assim sucessivamente.
+btnReiniciarResult.addEventListener ("click", () => {
+    mostrarTela(home);
+    destruirQuestoes();
+    esvaziarCamposHome();
+});
+
 btnAudio.onclick = () => {
+    let stopped = true;
+
     if(stopped) {
         playAudio();
         stopped = false;
@@ -471,4 +439,10 @@ btnAudio.onclick = () => {
     // troca o ícone toda vez que clicamos no botão seguindo as funções comVolume/semVolume
     btnAudio.innerHTML = audioSvg;  
 }
+
+mostrarTela(home);
+popularTabela();
+populateRanking(quizResults);
+
+
 
