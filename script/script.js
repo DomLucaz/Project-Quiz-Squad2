@@ -3,8 +3,7 @@ import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
 import {pararCronometro, iniciarCronometro} from "./cronometro.js";
-import { comVolume, semVolume, btnAudio, audioSvg } from "./trilhaSonora.js";
-
+import { pauseAudio, playAudio, btnAudio, audioSvg } from "./trilhaSonora.js";
 
 //========= Declarações =============================
 
@@ -373,9 +372,10 @@ function ranking() {
     }
 
     // Função para gerar o HTML da lista a partir de um objeto de pontuações
-    function generateListHTML(arrayPontos) {
+    function gerarListasHTML(arrayPontos) {
+        let top5 = arrayPontos.slice(0, 5);
         let html = '';
-        for(let [nome, pontos] of arrayPontos) {
+        for(let [nome, pontos] of top5) {
             html += `<li>${nome} - ${pontos}/10</li>\n`;
         }
         return html;
@@ -395,9 +395,9 @@ function ranking() {
     arrayPontuacaoJS.sort(sortfunction); 
 
     // Atualiza o HTML das listas
-    listaHTML.innerHTML = generateListHTML(arrayPontuacaoHTML);
-    listaCSS.innerHTML = generateListHTML(arrayPontuacaoCSS);
-    listaJS.innerHTML = generateListHTML(arrayPontuacaoJS);
+    listaHTML.innerHTML = gerarListasHTML(arrayPontuacaoHTML);
+    listaCSS.innerHTML = gerarListasHTML(arrayPontuacaoCSS);
+    listaJS.innerHTML = gerarListasHTML(arrayPontuacaoJS);
 }
 
 //========= Main =============================
@@ -410,13 +410,11 @@ let stopped = true;
 // stopped inicia como verdade então o primeiro clique vai entrar no if, dentro do if o valor de stopped vai mudar e no segundo clique ele vai entrar no else, e assim sucessivamente.
 btnAudio.onclick = () => {
     if(stopped) {
-        console.log("teste if", stopped)
-        comVolume();
+        playAudio();
         stopped = false;
     }
     else {
-        console.log("teste else", stopped)
-        semVolume();
+        pauseAudio();
         stopped = true;
     }
     // troca o ícone toda vez que clicamos no botão seguindo as funções comVolume/semVolume
