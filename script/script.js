@@ -2,8 +2,9 @@
 import { questoesHtml } from "./temaHtml.js";
 import { questoesCSS } from "./temaCSS.js";
 import { questoesJS } from "./temaJS.js";
-import {pararCronometro, iniciarCronometro} from "./cronometro.js";
+import { pararCronometro, iniciarCronometro } from "./cronometro.js";
 import { pauseAudio, playAudio, btnAudio, audioSvg } from "./trilhaSonora.js";
+import { quizResults } from "./populate.JS";
 
 //========= Declarações =============================
 
@@ -224,6 +225,7 @@ btnContinuarQuiz.addEventListener("click", () => {
     insightsAcertos();
     insightsErros();
     ranking();
+    limitarTabelaResultato()
 });
 
 //Botão para voltar a página inicial 
@@ -231,12 +233,13 @@ btnReiniciarResult.addEventListener ("click", () => {
     mostrarTela(home);
     destruirQuestoes();
     esvaziarCamposHome();
+    console.log(informacoesUser);
 });
 
 function insertTableResults() {
     const tabelaResultado = document.querySelector(".tabelaResultado tbody");
     const dadosUsuario = informacoesUser[informacoesUser.length-1];
-    const newRow = tabelaResultado.insertRow();
+    const newRow = tabelaResultado.insertRow(0);
 
     newRow.innerHTML = `
         <td>${dadosUsuario.nome}</td>
@@ -245,6 +248,32 @@ function insertTableResults() {
         <td>${dadosUsuario.data} ${dadosUsuario.hora}</td>
         <td>${dadosUsuario.pontuacao}/10</td>
     `;
+}
+
+function popularTabela() {
+    const tabelaResultado = document.querySelector(".tabelaResultado tbody");
+    
+    for (let index = 0; index < quizResults.length; index++) {
+        const dadosUsuario = quizResults[index];
+        const newRow = tabelaResultado.insertRow();
+    
+        newRow.innerHTML = `
+            <td>${dadosUsuario.nome}</td>
+            <td>${dadosUsuario.tema}</td>
+            <td>${dadosUsuario.tempo}</td>
+            <td>${dadosUsuario.dataQuiz}</td>
+            <td>${dadosUsuario.pontuacao}/10</td>
+        `;
+    }
+}
+
+function limitarTabelaResultato() {
+    const arrLinhas = document.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+    if (arrLinhas.length > 5) {
+        for (let index = arrLinhas.length; index != 5; index--) {
+            arrLinhas[arrLinhas.length-1].remove();
+        }   
+    }
 }
 
 //Função para mostrar os insights (média por acertos)
@@ -280,7 +309,7 @@ function insightsAcertos() {
     if(pontuacoesHTML > 0) {
         let mediaHTML = pontuacoesHTML / contHTML;
         mediaHTML /= 10;
-        let ltdaHTML = mediaHTML.toFixed(4);
+        let ltdaHTML = mediaHTML.toFixed(2);
         percentHTML = Number(ltdaHTML) * 100;
         tagMediaHTML.innerHTML = `${percentHTML}%`;
     }
@@ -292,7 +321,7 @@ function insightsAcertos() {
     if(pontuacoesCSS > 0) {
         let mediaCSS = pontuacoesCSS / contCSS;
         mediaCSS /= 10;
-        let ltdaCSS = mediaCSS.toFixed(4);
+        let ltdaCSS = mediaCSS.toFixed(2);
         percentCSS = Number(ltdaCSS) * 100;
         tagMediaCSS.innerHTML = `${percentCSS}%`;
     }
@@ -304,7 +333,7 @@ function insightsAcertos() {
     if(pontuacoesJS > 0) {
         let mediaJS = pontuacoesJS / contJS;
         mediaJS /= 10;
-        let ltdaJS = mediaJS.toFixed(4);
+        let ltdaJS = mediaJS.toFixed(2);
         percentJS = Number(ltdaJS) * 100;
         tagMediaJS.innerHTML = `${percentJS}%`;
     }
@@ -400,9 +429,18 @@ function ranking() {
     listaJS.innerHTML = gerarListasHTML(arrayPontuacaoJS);
 }
 
+function populateRanking(rankPopulate) {
+    for (let index = 0; index < rankPopulate.length; index++) {
+        informacoesUser.push(rankPopulate[index]);
+    }
+}
+
+
 //========= Main =============================
 
 mostrarTela(home);
+popularTabela();
+populateRanking(quizResults);
 
 //========= Trilha Sonora =====================
 let stopped = true;

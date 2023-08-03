@@ -74,7 +74,7 @@
         <!-- Inicio seçao questões quiz -->
         <div id="quiz" hidden>
             <section class="quizPage">
-                <h2><span id="quizTema"></span></h2>
+                <h1><span id="quizTema"></span></h1>
                 <form id="questoes" class="formQuiz">
                 </form>
                 <div class="btn-questao">
@@ -90,6 +90,7 @@
         <div id="result" hidden>
             <section class="result">
                 <h1>Resultado</h1>
+
 
                 <table class="tabelaResultado">
                     <thead>
@@ -108,7 +109,7 @@
                 <h2>Rank e Medias</h2>
                 <div class="rank">
                     <div id="rank-html" class="listRank">
-                        <h2>HTML</h2>
+                        <h3>HTML</h3>
                         <ol id="tema-html"></ol>
                         <div class="medias">
                             <div class="acertos">
@@ -121,25 +122,24 @@
                             </div>
                         </div>
                     </div>
-
                     <div id="rank-css" class="listRank">
-                        <h2>CSS</h2>
-                        <ol id="tema-css"></ol>
+                        <h3>CSS</h3>
+                        <ol id="tema-css">
+                            <li></li>
+                        </ol>
                         <div class="medias">
                             <div class="acertos">
                                 <img src="assets/checked.png">
                                 <span id="media-acertos-css"></span>
                             </div>
-
                             <div class="erros">
                                 <img src="assets/x-button.png">
                                 <span id="media-erros-css"></span>
                             </div>
                         </div>
                     </div>
-
                     <div id="rank-js" class="listRank">
-                        <h2>JavaScript</h2>
+                        <h3>JavaScript</h3>
                         <ol id="tema-js"></ol>
                         <div class="medias">
                             <div class="acertos">
@@ -148,15 +148,12 @@
                             </div>
                             <div class="erros">
                                 <img src="assets/x-button.png">
-                                <span id="media-erros-js">00.00%</span>
+                                <span id="media-erros-js"></span>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
                 <button type="button" id="inicio">Reniciar</button>
-
             </section>
         </div>
         <!--Fim seção resultado -->
