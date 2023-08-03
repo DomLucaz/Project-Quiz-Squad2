@@ -622,3 +622,65 @@ tr:last-child td:last-child {
 .dark .tabelaResultado th {
     background-color: #2E2E48;
 }
+
+/*********** media query ***********/
+
+@media(max-width: 480px) {
+    .container {
+        width: 80%;
+        justify-content: center;
+    }
+
+    .formQuiz {
+        width: inherit;
+    }
+
+    .btn-questao {
+        justify-content: center;
+    }
+
+    .result {
+        justify-content: space-between;
+    }
+
+    .tabelaResultado{
+        width: 80%;
+        font-size: 7px;
+    }
+
+    .rank {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+}
+
+@media(min-width: 481px) and (max-width: 900px) {
+    .formQuiz {
+        width: inherit;
+    }
+
+    .result {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .tabelaResultado{
+        width: 80%;
+        font-size: 15px;
+    }
+
+    .rank {
+        
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .acertos img,
+    .erros img{
+        width: 30%;
+    }
+
+}
