@@ -38,6 +38,7 @@ body.dark {
     background: var(--cordarkmode); 
 }
 
+
 /**************************************************************/
 
 [hidden]{
@@ -69,12 +70,16 @@ nav{
     align-items: center;
 }
 
+.box-audio{
+    display: flex;
+    align-items: center;
+}
+
 .btn-mutePlay{
     border-radius: 40%;
     padding: 6px;
     border: none;
     background-color: transparent;
-    cursor: pointer;
 }
 
 .btn-mutePlay:hover{
@@ -163,9 +168,9 @@ nav{
     border: 1px solid rgb(160, 160, 160);
     border-radius: 8px;
     background-color: rgba(218, 218, 218, 0.205);
-    padding: 40px 20px 40px 20px ;
+    padding: 40px 20px 40px 20px;
     border: 1px solid black;
-    box-shadow: 0.5px 0.5px 10px 0.5px #313131;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 .card h1{
@@ -225,6 +230,7 @@ nav{
     height: 94vh;
     height: 94dvh;
 }
+
 
 .formQuiz{
     display: flex;
@@ -298,6 +304,7 @@ nav{
 
 .btn-questao{
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     margin-top: 50px;
     width: 54%;
@@ -323,8 +330,7 @@ nav{
 }
 
 .audio-btn {
-    border-radius: 100%;
-    padding: 6px;
+    border-radius: 70%;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -345,14 +351,18 @@ nav{
     align-items: center;
     height: 94dvh;
     height: 94vh;
-}   
 
+}
 
-.tabelaResultado{
-    margin: 20px 0;
+.result h2{
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.tabelaResultado {
+    margin: 30px 0;
     width: 80%;
-    border: 1px solid;
-    border-collapse: separate; 
+    border-collapse: separate; /* Alteração para "collapse" */
     border-spacing: 0;
     border-radius: 10px 10px 0 0;
 }
@@ -361,56 +371,123 @@ nav{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #F8F8F8;
-    color: black;
-}
-
-.tabelaResultado td, .tabelaResultado th{ 
+    background-color: #0064ED;
+    color: rgb(255, 255, 255);
     padding: 8px;
+    border: 1px solid #98a0ac;
+    border-style: solid none solid none;
 }
 
-.tabelaResultado tr:first-child td { border-top-style: solid;}
-
-.tabelaResultado tr:nth-child(even){background-color: #f2f2f2;}
-
-.tabelaResultado tr:hover {background-color: #ddd;}
-
-.medias{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 80%;
-    padding: 10px 0px 10px 0px;
-    
-}
-.acertos{
-    background-color: #0ff153;
-    padding: 10px 18px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 500;
+.tabelaResultado td {
+    padding: 8px;
+    border: solid 1px #98a0ac;
+    border-style: none;
 }
 
-.erros{
-    background-color: red;
-    padding: 10px 18px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    font-weight: 400;
+tr:last-child th:first-child {
+    border-top-left-radius: 10px;
+    border-style: solid none solid solid;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+    border-style: none none solid solid;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 0px 0px
+}
+
+tr:last-child td {
+    border-style: none none solid none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 0px 0px
+}
+
+td:first-child{
+    border-style: none none none solid;
+}
+
+td:last-child{
+    border-style: none solid none none;
+}
+
+tr:last-child th:last-child {
+    border-top-right-radius: 10px;
+    border-style: solid solid solid none;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+    border-style: none solid solid none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 0px 0px
 }
 
 .rank{
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     width: 80%;
-    margin: 20px 0px;
+    /* border: 1px solid red; */
+    margin: 30px 0px;
 }
+
+.listRank{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 6px 6px 6px 6px;
+    border: 1px solid #98a0ac;
+    background-color: #98a0ac0e;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.listRank h3{
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 10px 0px;
+}
+
+.medias{
+    display: flex;
+    padding-top: 10px;
+    margin: 0px 6px 6px 6px;
+}
+
+.acertos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 6px;
+    align-items: center;
+    border: 2px solid #55e055;
+    background-color: #55e0553f;
+    padding: 8px 8px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.erros{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 8px;
+    border-radius: 10px;
+    color: black;
+    font-weight: 400;
+    border: 2px solid red;
+    background-color: rgba(255, 0, 0, 0.26);
+    color: rgb(107, 107, 107);
+}
+
+.erros span, .acertos span{
+    font-weight: 600;
+    margin: 0px 4px;
+}
+
+.erros img, .acertos img{
+    margin-left:4px;
+}
+
 
 .ranking {
     border: 1px solid #454B54;
@@ -446,7 +523,11 @@ nav{
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-
+.teste{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+}
 /************** Estilização modo dark *******************/                                                                                                                                                   
 
 /*Home Quiz */
@@ -456,13 +537,49 @@ nav{
 
 }
 
+.dark header{
+    background-color: #2E2E48;
+}
+
+
+.dark button {
+    background-color: #2E2E48;
+}
+
+.dark button:hover {
+    background-color: #43436b;
+        opacity: 0.8;
+        transition: 0.5s;
+}
+
+.dark h2{
+    color: #fafafa;
+}
+
+.dark h3{
+    color: #fafafa;
+}
+
+.dark h1{
+    color: #fafafa;
+}
+
+.dark ol{
+    color: #fafafa;
+}
+
+.dark span{
+    color: #fafafa;
+}
+
+.dark td {
+    color: #fafafa;
+}
+
 .dark .timer {
     color: #fafafa;
 }
 
-.dark .card h1 {
-    color: #fafafa;
-}
 
 .dark .card p {
     color: #fafafa;
@@ -472,32 +589,36 @@ nav{
     color: #fafafa;
 }
 
-.dark .timeStart {
+.dark .btn-start {
     color: #fafafa;
 }
 
-.dark #timeStop {
+.dark .audio-btn{
     color: #fafafa;
 }
 
-.dark .btn-mutePlay{
+.dark .audio-btn:hover{
+    background-color: rgba(255, 255, 255, 0.178);
+    transition: 0.5s;
+}
+
+/********* Seção questões quiz **********/
+
+.dark .quizPage {
     color: #fafafa;
 }
 
-.dark .formulario button:hover{
-    background-color: rgb(9, 9, 172);
+.dark .campoQuiz {
+    border-color:#43436b ;
 }
 
-/*Seção questões quiz*/
 
-.dark #quiz {
-    color: #fafafa;
+.dark .identificador {
+    background-color:#43436b ;
 }
 
-.dark button {
-    background-color: rgb(13, 13, 39);
-}
+/*********** Seção questões quiz ***********/
 
-.dark #timeStop {
-    color: #fafafa;
+.dark .tabelaResultado th {
+    background-color: #2E2E48;
 }

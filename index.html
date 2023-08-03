@@ -37,8 +37,10 @@
                     Seu navegador não possui o elemento audio
                 </audio>
                 <button id="btn-audio" class="audio-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
                     </svg>
                 </button>
             </div>
@@ -54,7 +56,7 @@
                     <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
                     <form class="formulario">
                         <label for="nome">Nome</label>
-                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="">
+                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="10">
                         <label>Tema</label>
                         <select id="tema">
                             <option disabled selected>-- Selecione um Tema --</option>
@@ -72,7 +74,7 @@
         <!-- Inicio seçao questões quiz -->
         <div id="quiz" hidden>
             <section class="quizPage">
-                <h1>Quiz - <span id="quizTema"></span></h1>
+                <h1><span id="quizTema"></span></h1>
                 <form id="questoes" class="formQuiz">
                 </form>
                 <div class="btn-questao">
@@ -89,6 +91,7 @@
             <section class="result">
                 <h1>Resultado</h1>
 
+
                 <table class="tabelaResultado">
                     <thead>
                         <tr>
@@ -103,55 +106,54 @@
                     </tbody>
                 </table>
 
-                <div class="medias">
-                    <div class="acertos">
-                        <span>Media de Acertos - HTML</span>
-                        <span id="media-acertos-html"></span>
-                    </div>
-
-                    <div class="erros">
-                        <span>Media de erros - HTML</span>
-                        <span id="media-erros-html"></span>
-                    </div>
-
-                    <div class="acertos">
-                        <span>Media de Acertos - CSS</span>
-                        <span id="media-acertos-css"></span>
-                    </div>
-
-                    <div class="erros">
-                        <span>Media de erros - CSS</span>
-                        <span id="media-erros-css"></span>
-                    </div>
-
-                    <div class="acertos">
-                        <span>Media de Acertos - JS</span>
-                        <span id="media-acertos-js"></span>
-                    </div>
-
-                    <div class="erros">
-                        <span>Media de erros - JS</span>
-                        <span id="media-erros-js"></span>
-                    </div>
-                </div>
-
+                <h2>Rank e Medias</h2>
                 <div class="rank">
-                    <div id="rank-html">
-                        <h2>Ranking - HTML</h2>
+                    <div id="rank-html" class="listRank">
+                        <h3>HTML</h3>
                         <ol id="tema-html"></ol>
+                        <div class="medias">
+                            <div class="acertos">
+                                <img src="assets/checked.png">
+                                <span id="media-acertos-html"></span>
+                            </div>
+                            <div class="erros">
+                                <img src="assets/x-button.png">
+                                <span id="media-erros-html"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div id="rank-css">
-                        <h2>Ranking - CSS</h2>
-                        <ol id="tema-css"></ol>
+                    <div id="rank-css" class="listRank">
+                        <h3>CSS</h3>
+                        <ol id="tema-css">
+                            <li></li>
+                        </ol>
+                        <div class="medias">
+                            <div class="acertos">
+                                <img src="assets/checked.png">
+                                <span id="media-acertos-css"></span>
+                            </div>
+                            <div class="erros">
+                                <img src="assets/x-button.png">
+                                <span id="media-erros-css"></span>
+                            </div>
+                        </div>
                     </div>
-                    <div id="rank-js">
-                        <h2>Ranking - JS</h2>
+                    <div id="rank-js" class="listRank">
+                        <h3>JavaScript</h3>
                         <ol id="tema-js"></ol>
+                        <div class="medias">
+                            <div class="acertos">
+                                <img src="assets/checked.png">
+                                <span id="media-acertos-js"></span>
+                            </div>
+                            <div class="erros">
+                                <img src="assets/x-button.png">
+                                <span id="media-erros-js"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 <button type="button" id="inicio">Reniciar</button>
-
             </section>
         </div>
         <!--Fim seção resultado -->
