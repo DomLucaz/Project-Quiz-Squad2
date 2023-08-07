@@ -164,7 +164,10 @@ nav{
     height: 95dvh;
 }
 
-.card{
+.formulario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 1px solid rgb(160, 160, 160);
     border-radius: 8px;
     background-color: rgba(218, 218, 218, 0.205);
@@ -173,19 +176,13 @@ nav{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
-.card h1{
+.formulario h1{
     margin: 10px 10px 20px 10px;
 }
 
-.card p {
+.formulario p {
     margin-bottom: 10px;
     font-weight: 500;
-}
-
-.formulario{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .formulario label{
@@ -634,9 +631,13 @@ tr:last-child td:last-child {
     .formQuiz {
         width: inherit;
     }
+    .formulario{
+        text-align: center;
+    }
 
     .btn-questao {
         justify-content: center;
+        gap: 26px;
     }
 
     .result {
@@ -653,6 +654,13 @@ tr:last-child td:last-child {
         flex-direction: column;
         gap: 20px;
     }
+
+    ::-webkit-scrollbar {
+        width: 0;
+    }
+
+ 
+        
     
 }
 
