@@ -51,22 +51,20 @@
         <!-- Inicio home quiz -->
         <div id="home" hidden>
             <section class="home">
-                <div class="card">
+                <form class="formulario">
                     <h1>Quiz</h1>
-                    <p>Coloque seu nome, escolha um tema e clique em iniciar</p>
-                    <form class="formulario">
-                        <label for="nome">Nome</label>
-                        <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="15">
-                        <label>Tema</label>
-                        <select id="tema">
-                            <option disabled selected>-- Selecione um Tema --</option>
-                            <option value="HTML">HTML</option>
-                            <option value="CSS">CSS</option>
-                            <option value="JavaScript">JavaScript</option>
-                        </select>
-                        <button type="button" id="btnIniciar" class="btn-start">Iniciar</button>
-                    </form>
-                </div>
+                    <p>Coloque o seu nome, escolha um tema e clique em iniciar</p>
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text" placeholder="Nome usuário" name="uname" maxlength="15">
+                    <label>Tema</label>
+                    <select id="tema">
+                        <option disabled selected>-- Selecione um Tema --</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                    </select>
+                    <button type="button" id="btnIniciar" class="btn-start">Iniciar</button>
+                </form>
             </section>
         </div>
         <!-- Fim home quiz -->
@@ -106,7 +104,7 @@
                     </tbody>
                 </table>
 
-                <h2>Rank e Medias</h2>
+                <h2>Ranking e Médias</h2>
                 <div class="rank">
                     <div id="rank-html" class="listRank">
                         <h3>HTML</h3>
@@ -155,8 +153,8 @@
                 </div>
                 <button type="button" id="inicio">Reniciar</button>
             </section>
-        </div>
-        <!--Fim seção resultado -->
+            <!-- </div> -->
+            <!--Fim seção resultado -->
     </main>
 
     <script type="module" src="script/script.js"></script>
