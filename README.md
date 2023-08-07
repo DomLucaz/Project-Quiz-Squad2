@@ -1,5 +1,5 @@
 <div align="center">
-<p> <h1>📈 Project Quiz - SQUAD Nº2</p></h1>
+<p> <h1> Projeto Quiz - SQUAD Nº2</p></h1>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
@@ -16,10 +16,7 @@
 
 </b></h2>
 </div>
-
-
-
-O nosso projeto tem um objetivo duplo: avaliar não apenas o conhecimento prático em JavaScript, mas também as soft skills essenciais, como comunicação, organização e trabalho em equipe. O desafio que enfrentamos consiste em criar um Quiz interativo em JavaScript, que permita aos participantes escolherem um tema específico e responder a uma lista de questões objetivas. Ao finalizar o Quiz, o sistema fornecerá um feedback detalhado, indicando quais respostas estão corretas e quais estão erradas. 
+O nosso projeto tem um objetivo duplo: avaliar não apenas o conhecimento prático em JavaScript, mas também as soft skills essenciais, como comunicação, organização e trabalho em equipe. O desafio que enfrentamos consiste em criar um Quiz interativo em JavaScript, que permita aos participantes escolherem um tema específico e responder a uma lista de questões objetivas. Ao finalizar o Quiz, o sistema fornecerá um feedback detalhado, indicando quais respostas estão corretas e quais estão erradas e um ranking. 
 
 #
 
@@ -39,11 +36,7 @@ O nosso projeto tem um objetivo duplo: avaliar não apenas o conhecimento práti
 
 #
 
-<div align="center">
-<p><b> Implementações </b></p>
-</div>
-
-#
+### **Implementações** 💡
 
 1. Estrutura de arquivos e módulos;
 2. Interface de usuário;
