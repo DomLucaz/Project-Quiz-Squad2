@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
-<h3>SoulCode Academy e Porto Seguros.</h3>
+<h3>SoulCode Academy e Porto.</h3>
 </div>
 <img width="1000px" src="https://i.imgur.com/H80get6.jpg" title="Soulcode"/>
 <br>
